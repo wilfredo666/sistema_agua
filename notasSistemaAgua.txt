@@ -1,0 +1,52 @@
+pendientes
+-----------
+-hacer que la localizacion de google maps se muestre en un modal
+-encabezado en formulario venta, dataTable
+-considerar poner el formulario de NE en dos columnas
+-validaciones de formularios:
+  *usuario
+  *cliente
+  *productos
+-hacer que se muestre la ubicacion de un cliente al precionar el boton
+-El usuario no se puede eliminar si hay facturas o NE emitidas por el
+  *guardar en la nota de entrega el usuario que lo emite (reporte de ventas mayor)
+-Los productos no se pueden eliminar si hay facturas o NE emitidas con el
+  *revisar la restriccion po db, que devuelve al estar relacionado? sin importar con cuantas tablas campturar el error y con ello evitar la eliminacion restringida; segun almacen_ropa->eliTienda, me devuelve un booleano(true o false)
+-definir quien puede ver modulo personal
+dudas
+-El personal no puede eliminarse si esta en alguna NE (no se eliminara, solo se marcara como no disponible a nivel de db)
+-Terminar el crud de personal y vehiculo
+
+-validaciones select para nota de entrega y venta
+-deshabilitar del boton de agregaddo cuando se añada al carrito ya que se usa el id para eliminar y para cambiar la cantidad
+----------- 
+-Como son registrados los ingresos de los productos producidos?
+  *Podria necesitarse una nota de ingreso
+  
+  
+  
+  
+  ==========
+  reciclado
+  ==========
+                <datalist id="listChofer">
+                <?php 
+                $chofer=ControladorPersonal::ctrInfoChofer();
+
+                foreach($chofer as $value){
+                ?>
+                <option value="<?php echo $value["nombre_personal"]." ".$value["ap_pat_personal"]." ".$value["ap_mat_personal"];?>"><?php echo $value["id_personal"];?></option>
+                <?php }
+                ?>
+              </datalist>
+              
+                            <!--
+<input list="listChofer" type="text" class="form-control" name="chofer" id="chofer" placeholder="Ingrese el Carnet del chofer">-->
+
+              <!--                <div class="input-group-append">
+<button class="btn btn-outline-secondary" type="button" onclick="busCliente()">
+<i class="fas fa-search"></i>
+</button>
+</div>-->
+
+agregarCarrito(".$value['id_producto'].")
