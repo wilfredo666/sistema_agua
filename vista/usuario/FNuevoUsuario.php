@@ -31,7 +31,8 @@
       <label for="">Perfil de usuario</label>
       <select name="perfilUsuario" id="perfilUsuario" class="form-control">
         <option value="">Seleccionar</option>
-        <option value="Cajero">Cajero</option>
+        <option value="Secretaria">Secretaria</option>
+        <option value="Chofer">Chofer</option>
         <option value="Administrador">Administrador</option>
       </select>
     </div>
@@ -59,6 +60,10 @@
           required:true,
           minlength:5
         },
+        nomUsuario:{
+          required: true,
+          minlength:3
+        },
         passUsuario:{
           required:true,
           minlength:8
@@ -73,11 +78,12 @@
       },
 
       highlight: function(element, errorClass, validClass){
-        $(element).addClass('.is-invalid')
+        $(element).addClass('is-invalid')
+        /* .is-invalid */
       },
 
       unhighlight: function(element, errorClass, validClass){
-        $(element).removeClass('.is-invalid')
+        $(element).removeClass('is-invalid')
       }
 
     })
