@@ -53,6 +53,8 @@
 <script src="assest/js/vehiculo.js"></script>
 <!-- Select2 -->
 <script src="assest/plugins/select2/js/select2.full.min.js"></script>
+<!-- dropzonejs -->
+<script src="assest/plugins/dropzone/min/dropzone.min.js"></script>
 
 <!--====================
 seccion de modals
@@ -96,6 +98,7 @@ seccion de modals
 <script src="assest/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="assest/plugins/jquery-validation/additional-methods.min.js"></script>
 <script src="assest/plugins/jquery-validation/localization/messages_es.js"></script>
+
 
 <script>
   /*dataTable para productos*/

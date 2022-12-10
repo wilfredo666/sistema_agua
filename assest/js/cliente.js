@@ -13,6 +13,7 @@ function MNuevoCliente(){
 }
 
 function RegCliente(){
+  console.log("holaaa");
 
   var formData= new FormData($("#FormRegCliente")[0])
 
@@ -145,9 +146,36 @@ function MEliCliente(id){
           }
         }
       })
-
-
-
     }
   })
+}
+
+function previsualizar_fachada(){
+  let imagen=document.getElementById("ImgFachada").files[0]
+
+  if(imagen["type"]!="image/png" && imagen["type"]!="image/jpeg"){
+    $("#ImgFachada").val("")
+    swal.fire({
+      icon:"error",
+      showConfirmButton:true,
+      title:"La imagen debe ser formato PNG o JPG"
+    })
+  }else if(imagen["size"]>10000000){
+    $("#ImgFachada").val("")
+    Swal.fire({
+      icon: "error",
+      showConfirmButton:true,
+      title: "La imagen no debe superior a 10MB"
+    })
+
+  }else{
+    let datosImagen=new FileReader
+    datosImagen.readAsDataURL(imagen)
+
+    $(datosImagen).on("load", function(event){
+      let rutaImagen=event.target.result
+      $(".previsualizar").attr("src", rutaImagen)
+
+    })
+  }
 }

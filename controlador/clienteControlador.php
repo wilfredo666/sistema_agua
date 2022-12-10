@@ -24,12 +24,21 @@ class ControladorCliente{
   static public function ctrRegCliente(){
     require "../modelo/ClienteModelo.php";
 
+    $imagen = $_FILES["ImgFachada"];
+
+    $nomImagen= $imagen["name"];
+    $archImagen= $imagen["tmp_name"];
+
+    move_uploaded_file($archImagen, "../assest/dist/img/fachadas/.$nomImagen");
+
     $data=array(
       "rsCliente"=>$_POST["rsCliente"],
       "NitCiCliente"=>$_POST["NitCiCliente"],
       "dirCliente"=>$_POST["dirCliente"],
       "nombreCliente"=>$_POST["nombreCliente"],
-      "telCliente"=>$_POST["telCliente"]
+      "telCliente"=>$_POST["telCliente"],
+      "precioEntregaCli"=>$_POST["precioEntregaCli"],
+      "imgFachada"=>$nomImagen
     );
 
     $respuesta=ModeloCliente::mdlRegCliente($data);

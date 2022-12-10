@@ -20,9 +20,14 @@ class ModeloCliente{
     $dirCliente=$data["dirCliente"];
     $nombreCliente=$data["nombreCliente"];
     $telCliente=$data["telCliente"];
+    $imgFachada=$data["imgFachada"];
+    $precioEntregaCli=$data["precioEntregaCli"];
+
+    date_default_timezone_set('America/La_Paz');
+    $fecha = date('Y-m-d');
 
 
-    $stmt=Conexion::conectar()->prepare("insert into cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente)values('$rsCliente', '$NitCiCliente', '$dirCliente', '$nombreCliente', '$telCliente')");
+    $stmt=Conexion::conectar()->prepare("insert into cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente, foto_fachada, precio_entrega, fecha_registro_cliente ) values('$rsCliente', '$NitCiCliente', '$dirCliente', '$nombreCliente', '$telCliente', '$imgFachada', '$precioEntregaCli', '$fecha')");
 
     if($stmt->execute()){
       return "ok";
