@@ -17,12 +17,9 @@ class ModeloProducto{
 
     $codProducto=$data["codProducto"];
     $descProducto=$data["descProducto"];
-    $precioProducto=$data["precioProducto"];
     $imgProducto=$data["imgProducto"];
-    $UMProducto=$data["UMProducto"];
 
-
-    $stmt=Conexion::conectar()->prepare("insert into producto(cod_producto, nombre_producto, precio_venta_producto, unidad_medida, imagen_producto)values('$codProducto', '$descProducto', '$precioProducto', '$UMProducto', '$imgProducto')");
+    $stmt=Conexion::conectar()->prepare("insert into producto(cod_producto, nombre_producto, imagen_producto)values('$codProducto', '$descProducto', '$imgProducto')");
 
     if($stmt->execute()){
       return "ok";
@@ -47,14 +44,13 @@ class ModeloProducto{
   static public function mdlEditProducto($data){
 
     $descProducto=$data["descProducto"];
-    $precioProducto=$data["precioProducto"];
-    $UMProducto=$data["UMProducto"];
+    /* $UMProducto=$data["UMProducto"]; */
     $idProducto=$data["idProducto"];
     $ImgProducto=$data["ImgProducto"];
     $estadoProducto=$data["estadoProducto"];
 
 
-    $stmt=Conexion::conectar()->prepare("update producto set nombre_producto='$descProducto', precio_venta_producto='$precioProducto', unidad_medida='$UMProducto', imagen_producto='$ImgProducto', estado='$estadoProducto' where id_producto=$idProducto");
+    $stmt=Conexion::conectar()->prepare("update producto set nombre_producto='$descProducto', imagen_producto='$ImgProducto', estado='$estadoProducto' where id_producto=$idProducto");
 
     if($stmt->execute()){
       return "ok";

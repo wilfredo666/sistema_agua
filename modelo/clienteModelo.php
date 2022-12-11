@@ -55,9 +55,10 @@ class ModeloCliente{
     $idCliente=$data["idCliente"];
     $nombreCliente=$data["nombreCliente"];
     $telCliente=$data["telCliente"];
+    $precioEntregaCli=$data["precioEntregaCli"];
+    $imgProducto=$data["imgProducto"];
 
-
-    $stmt=Conexion::conectar()->prepare("update cliente set direccion_cliente='$dirCliente', nombre_cliente='$nombreCliente', telefono_cliente='$telCliente' where id_cliente=$idCliente");
+    $stmt=Conexion::conectar()->prepare("update cliente set direccion_cliente='$dirCliente', nombre_cliente='$nombreCliente', telefono_cliente='$telCliente', foto_fachada='$imgProducto', precio_entrega='$precioEntregaCli' where id_cliente=$idCliente");
 
     if($stmt->execute()){
       return "ok";

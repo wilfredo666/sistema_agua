@@ -29,7 +29,7 @@ class ControladorCliente{
     $nomImagen= $imagen["name"];
     $archImagen= $imagen["tmp_name"];
 
-    move_uploaded_file($archImagen, "../assest/dist/img/fachadas/.$nomImagen");
+    move_uploaded_file($archImagen, "../assest/dist/img/fachadas/".$nomImagen);
 
     $data=array(
       "rsCliente"=>$_POST["rsCliente"],
@@ -55,11 +55,25 @@ class ControladorCliente{
   static public function ctrEditCliente(){
     require "../modelo/clienteModelo.php";
 
+    $imgFachadaActual = $_POST["imgActFachada"];
+    $imgFachada = $_FILES["ImgFachada"];
+
+    if($imgFachada["name"]==""){
+      $imagen = $imgFachadaActual;
+    }else{
+      $imagen = $imgFachada["name"];
+      $archImagen=$imgFachada["tmp_name"];
+
+      move_uploaded_file($archImagen,"../assest/dist/img/fachadas/".$imagen);
+    }
+
      $data=array(
       "idCliente"=>$_POST["idCliente"],
       "dirCliente"=>$_POST["dirCliente"],
       "nombreCliente"=>$_POST["nombreCliente"],
-      "telCliente"=>$_POST["telCliente"]
+      "telCliente"=>$_POST["telCliente"],
+      "precioEntregaCli"=>$_POST["precioEntregaCli"],
+      "imgProducto"=>$imagen
     );
 
     $respuesta=ModeloCliente::mdlEditCliente($data);

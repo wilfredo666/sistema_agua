@@ -30,16 +30,6 @@ $producto=ControladorProducto::ctrInfoProducto($id);
         </tr>
 
         <tr>
-          <th>Precio</th>
-          <td><?php echo $producto["precio_venta_producto"];?></td>
-        </tr>
-
-        <tr>
-          <th>Unidad de medida</th>
-          <td><?php echo $producto["unidad_medida"];?></td>
-        </tr>
-
-        <tr>
           <th>Disponibilidad</th>
           <?php 
           if($producto["estado"]==1){

@@ -13,7 +13,6 @@
         <tr>
           <th>Cod. Producto</th>
           <th>Descripción</th>
-          <th>Precio</th>
           <th>Imagen</th>
           <th>Disponibilidad</th>
           <td>

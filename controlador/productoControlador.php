@@ -34,10 +34,7 @@ class ControladorProducto{
     $data=array(
       "codProducto"=>$_POST["codProducto"],
       "descProducto"=>$_POST["descProducto"],
-      "precioProducto"=>$_POST["precioProducto"],
-      "UMProducto"=>$_POST["UMProducto"],
       "imgProducto"=>$nomImagen,
-
     );
 
     $respuesta=ModeloProducto::mdlRegProducto($data);
@@ -47,7 +44,6 @@ class ControladorProducto{
 
   static public function ctrInfoProducto($id){
     $respuesta=ModeloProducto::mdlInfoProducto($id);
-
     return $respuesta;
   }
 
@@ -69,8 +65,7 @@ class ControladorProducto{
 
     $data=array(
       "descProducto"=>$_POST["descProducto"],
-      "precioProducto"=>$_POST["precioProducto"],
-      "UMProducto"=>$_POST["UMProducto"],
+      /* "UMProducto"=>$_POST["UMProducto"], */
       "idProducto"=>$_POST["idProducto"],
       "ImgProducto"=>$imagen,
       "estadoProducto"=>$_POST["estadoProducto"]
