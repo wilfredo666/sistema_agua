@@ -25,14 +25,18 @@ class ModeloPersonal{
 
   static public function mdlRegPersonal($data){
 
-    $rsPersonal=$data["rsPersonal"];
-    $NitCiPersonal=$data["NitCiPersonal"];
-    $dirPersonal=$data["dirPersonal"];
-    $nombrePersonal=$data["nombrePersonal"];
+    $nomPersonal=$data["nomPersonal"];
+    $patPersonal=$data["patPersonal"];
+    $matPersonal=$data["matPersonal"];
+    $ciPersonal=$data["ciPersonal"];
     $telPersonal=$data["telPersonal"];
+    $contactoReferencia=$data["contactoReferencia"];
+    $cargoPersonal=$data["cargoPersonal"];
+    $fechaNacPersonal=$data["fechaNacPersonal"];
+    $fechaIngPersonal=$data["fechaIngPersonal"];
 
-
-    $stmt=Conexion::conectar()->prepare("insert into Personal(razon_social_Personal, nit_ci_Personal, direccion_Personal, nombre_Personal, telefono_Personal)values('$rsPersonal', '$NitCiPersonal', '$dirPersonal', '$nombrePersonal', '$telPersonal')");
+    /* var_dump($nomPersonal); */
+    $stmt=Conexion::conectar()->prepare("insert into personal(nombre_personal, ap_pat_personal, ap_mat_personal, ci_personal, cargo_personal, fecha_nac_personal, telefono_personal, contacto_referencia, fecha_ingreso) values('$nomPersonal', '$patPersonal', '$matPersonal', '$ciPersonal', '$cargoPersonal', '$fechaNacPersonal', '$telPersonal', '$contactoReferencia', '$fechaIngPersonal')");
 
     if($stmt->execute()){
       return "ok";
@@ -45,7 +49,7 @@ class ModeloPersonal{
   }
 
   static public function mdlInfoPersonal($id){
-    $stmt=Conexion::conectar()->prepare("select * from Personal where id_Personal=$id");
+    $stmt=Conexion::conectar()->prepare("select * from personal where id_personal=$id");
     $stmt->execute();
 
     return $stmt->fetch();
@@ -56,13 +60,19 @@ class ModeloPersonal{
 
   static public function mdlEditPersonal($data){
 
-    $dirPersonal=$data["dirPersonal"];
     $idPersonal=$data["idPersonal"];
-    $nombrePersonal=$data["nombrePersonal"];
+    $nomPersonal=$data["nomPersonal"];
+    $patPersonal=$data["patPersonal"];
+    $matPersonal=$data["matPersonal"];
+    $ciPersonal=$data["ciPersonal"];
     $telPersonal=$data["telPersonal"];
+    $contactoReferencia=$data["contactoReferencia"];
+    $cargoPersonal=$data["cargoPersonal"];
+    $fechaNacPersonal=$data["fechaNacPersonal"];
+    $fechaIngPersonal=$data["fechaIngPersonal"];
+    $estadoPersonal=$data["estadoPersonal"];
 
-
-    $stmt=Conexion::conectar()->prepare("update Personal set direccion_Personal='$dirPersonal', nombre_Personal='$nombrePersonal', telefono_Personal='$telPersonal' where id_Personal=$idPersonal");
+    $stmt=Conexion::conectar()->prepare("update personal set nombre_personal='$nomPersonal', ap_pat_personal='$patPersonal', ap_mat_personal='$matPersonal', ci_personal='$ciPersonal', cargo_personal='$cargoPersonal', fecha_nac_personal='$fechaNacPersonal', telefono_personal='$telPersonal', contacto_referencia='$contactoReferencia', fecha_ingreso='$fechaIngPersonal', estado_personal='$estadoPersonal' where id_personal=$idPersonal");
 
     if($stmt->execute()){
       return "ok";

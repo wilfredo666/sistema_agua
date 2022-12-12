@@ -48,9 +48,9 @@ function dibujarTablaCarrito(){
     let fila=document.createElement("tr")
 
     fila.innerHTML='<td>'+detalle.descProducto+'</td>'+
-      '<td><input type="number" class="form-control form-control-sm" id="cantPro_'+detalle.idProducto+'" value="'+detalle.cantProducto+'" onkeyup="calcularPreProd('+detalle.idProducto+')">'+'</td>'+
+      '<td><input type="number" class="form-control form-control-sm" id="cantPro_'+detalle.idProducto+'" value="'+detalle.cantProducto+'" onkeyup="calcularPreProd('+detalle.idProducto+')">'+'</td>'/* +
       '<td>'+detalle.precioProducto+'</td>'+
-      '<td>'+detalle.precioTotalPro+'</td>'
+      '<td>'+detalle.precioTotalPro+'</td>' */
 
     let tdEliminar=document.createElement("td")
     let botonEliminar=document.createElement("button")
@@ -103,7 +103,7 @@ function calcularTotal(){
     totalCarrito=totalCarrito+parseFloat(arregloCarrito[i].precioTotalPro)
   }
 
-  document.getElementById("totalNE").innerHTML=(totalCarrito).toFixed(2)
+  /* document.getElementById("totalNE").innerHTML=(totalCarrito).toFixed(2) */
 }
 
 function validarFormulario(){

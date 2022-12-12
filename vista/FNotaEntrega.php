@@ -25,7 +25,7 @@
                 <tr>
                   <th>Cod. Producto</th>
                   <th>Descripción</th>
-                  <th>Precio</th>
+                  <!-- <th>Precio</th> -->
                   <td></td>
                 </tr>
               </thead>
@@ -44,12 +44,12 @@
               <span class="input-group-text">Chofer</span>
             </div>
             <select class="form-control select2bs4" name="chofer" id="chofer">
-             <option value="">Seleccionar chofer</option>
-              <?php 
-              $chofer=ControladorPersonal::ctrInfoChoferes();
-              foreach($chofer as $value){
+              <option value="">Seleccionar chofer</option>
+              <?php
+              $chofer = ControladorPersonal::ctrInfoChoferes();
+              foreach ($chofer as $value) {
               ?>
-              <option value="<?php echo $value["id_personal"];?>"><?php echo $value["nombre_personal"]." ".$value["ap_pat_personal"]." ".$value["ap_mat_personal"]?></option>
+                <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>
               <?php
               }
               ?>
@@ -62,11 +62,11 @@
             </div>
             <select class="form-control select2bs4" name="vehiculo" id="vehiculo">
               <option>Seleccionar vehiculo</option>
-              <?php 
-              $vehiculo=ControladorVehiculo::ctrListaVehiculos();
-              foreach($vehiculo as $value){
+              <?php
+              $vehiculo = ControladorVehiculo::ctrListaVehiculos();
+              foreach ($vehiculo as $value) {
               ?>
-              <option value="<?php echo $value["id_vehiculo"];?>"><?php echo $value["desc_vehiculo"];?></option>
+                <option value="<?php echo $value["id_vehiculo"]; ?>"><?php echo $value["desc_vehiculo"]; ?></option>
               <?php
               }
               ?>
@@ -88,8 +88,8 @@
                 <tr>
                   <th style="width:200px">Descripción</th>
                   <th style="width:50px">Cantidad</th>
-                  <th>Precio</th>
-                  <th>P. Total</th>
+                  <!-- <th>Precio</th>
+                  <th>P. Total</th> -->
                   <td>&nbsp;</td>
                 </tr>
               </thead>
@@ -97,14 +97,14 @@
 
               </tbody>
               <tfoot>
-                <tr>
+                <!-- <tr>
                   <th>
                     Total
                   </th>
                   <td></td>
                   <td></td>
                   <td id="totalNE" style="text-decoration: underline"></td>
-                </tr>
+                </tr> -->
               </tfoot>
             </table>
           </div>

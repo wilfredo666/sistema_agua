@@ -1,6 +1,6 @@
 function MNuevoPersonal(){
   $("#modal-lg").modal("show")
-
+  
   var obj=""
   $.ajax({
     type:"POST",
@@ -12,22 +12,18 @@ function MNuevoPersonal(){
   })
 }
 
-function Regpersonal(){
-  let passpersonal=document.getElementById("passpersonal").value
-  let passpersonal2=document.getElementById("passpersonal2").value
-
-  if(passpersonal==passpersonal2){
-
-    var formData= new FormData($("#FormRegpersonal")[0])
+function RegPersonal(){
+      var formData= new FormData($("#FormRegPersonal")[0])
 
     $.ajax({
       type:"POST",
-      url:"controlador/personalControlador.php?ctrRegpersonal",
+      url:"controlador/personalControlador.php?ctrRegPersonal",
       data:formData,
       cache:false,
       contentType:false,
       processData:false,
       success:function(data){
+        /* console.log(data); */
         if(data=="ok"){
           Swal.fire({
             icon: 'success',
@@ -49,42 +45,34 @@ function Regpersonal(){
         }
       }
     })
-  }else{
-    document.getElementById("error-pass").innerHTML="Los campos de contraseña no coinciden"
-  }
-
 }
 
-function MEditpersonal(id){
-  $("#modal-default").modal("show")
+function MEditPersonal(id){
+  $("#modal-lg").modal("show")
 
   var obj=""
   $.ajax({
     type:"POST",
-    url:"vista/personal/FEditpersonal.php?id="+id,
+    url:"vista/personal/FEditPersonal.php?id="+id,
     data:obj,
     success:function(data){
-      $("#content-default").html(data)
+      $("#content-lg").html(data)
     }
   })
 }
 
-function Editpersonal(){
-  let passpersonal=document.getElementById("passpersonal").value
-  let passpersonal2=document.getElementById("passpersonal2").value
-
-  if(passpersonal==passpersonal2){
-
-    var formData= new FormData($("#FormEditpersonal")[0])
+function EditPersonal(){
+    var formData= new FormData($("#FormEditPersonal")[0])
 
     $.ajax({
       type:"POST",
-      url:"controlador/personalControlador.php?ctrEditpersonal",
+      url:"controlador/personalControlador.php?ctrEditPersonal",
       data:formData,
       cache:false,
       contentType:false,
       processData:false,
       success:function(data){
+        /* console.log(data); */
         if(data=="ok"){
           Swal.fire({
             icon: 'success',
@@ -106,22 +94,18 @@ function Editpersonal(){
         }
       }
     })
-  }else{
-    document.getElementById("error-pass").innerHTML="Los campos de contraseña no coinciden"
-  }
-
 }
 
-function MVerpersonal(id){
-  $("#modal-default").modal("show")
+function MVerPersonal(id){
+  $("#modal-lg").modal("show")
 
   var obj=""
   $.ajax({
     type:"POST",
-    url:"vista/personal/MVerpersonal.php?id="+id,
+    url:"vista/personal/MVerPersonal.php?id="+id,
     data:obj,
     success:function(data){
-      $("#content-default").html(data)
+      $("#content-lg").html(data)
     }
   })
 }

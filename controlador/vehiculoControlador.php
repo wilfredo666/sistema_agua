@@ -22,14 +22,18 @@ class ControladorVehiculo{
   }
 
   static public function ctrRegVehiculo(){
-    require "../modelo/VehiculoModelo.php";
+    require "../modelo/vehiculoModelo.php";
+    $imagen = $_FILES["ImgVehiculo"];
+
+    $nomImagen = $imagen["name"];
+    $archImagen = $imagen["tmp_name"];
+
+    move_uploaded_file($archImagen, "../assest/dist/img/vehiculos/".$nomImagen);
 
     $data=array(
-      "rsVehiculo"=>$_POST["rsVehiculo"],
-      "NitCiVehiculo"=>$_POST["NitCiVehiculo"],
-      "dirVehiculo"=>$_POST["dirVehiculo"],
-      "nombreVehiculo"=>$_POST["nombreVehiculo"],
-      "telVehiculo"=>$_POST["telVehiculo"]
+      "placaVehiculo"=>$_POST["placaVehiculo"],
+      "descVehiculo"=>$_POST["descVehiculo"],
+      "imgVehiculo"=>$nomImagen
     );
 
     $respuesta=ModeloVehiculo::mdlRegVehiculo($data);
@@ -44,13 +48,26 @@ class ControladorVehiculo{
   }
 
   static public function ctrEditVehiculo(){
-    require "../modelo/VehiculoModelo.php";
+    require "../modelo/vehiculoModelo.php";
+
+    $imgVehiculoActual = $_POST["imgActVehiculo"];
+    $imgVehiculo = $_FILES["ImgVehiculo"];
+
+    if($imgVehiculo == ""){
+      $imagen = $imgVehiculoActual;
+    }else{
+      $imagen = $imgVehiculo["name"];
+      $archImagen = $imgVehiculo["tmp_name"];
+
+      move_uploaded_file($archImagen, "../assest/dist/img/vehiculos/".$imagen);
+    }
 
      $data=array(
       "idVehiculo"=>$_POST["idVehiculo"],
-      "dirVehiculo"=>$_POST["dirVehiculo"],
-      "nombreVehiculo"=>$_POST["nombreVehiculo"],
-      "telVehiculo"=>$_POST["telVehiculo"]
+      "placaVehiculo"=>$_POST["placaVehiculo"],
+      "descVehiculo"=>$_POST["descVehiculo"],
+      "estadoVehiculo"=>$_POST["estadoVehiculo"],
+      "imgVehiculo"=>$imagen
     );
 
     $respuesta=ModeloVehiculo::mdlEditVehiculo($data);

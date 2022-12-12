@@ -15,14 +15,11 @@ class ModeloVehiculo{
 
   static public function mdlRegVehiculo($data){
 
-    $rsVehiculo=$data["rsVehiculo"];
-    $NitCiVehiculo=$data["NitCiVehiculo"];
-    $dirVehiculo=$data["dirVehiculo"];
-    $nombreVehiculo=$data["nombreVehiculo"];
-    $telVehiculo=$data["telVehiculo"];
+    $placaVehiculo=$data["placaVehiculo"];
+    $descVehiculo=$data["descVehiculo"];
+    $imgVehiculo=$data["imgVehiculo"];
 
-
-    $stmt=Conexion::conectar()->prepare("insert into Vehiculo(razon_social_Vehiculo, nit_ci_Vehiculo, direccion_Vehiculo, nombre_Vehiculo, telefono_Vehiculo)values('$rsVehiculo', '$NitCiVehiculo', '$dirVehiculo', '$nombreVehiculo', '$telVehiculo')");
+    $stmt=Conexion::conectar()->prepare("insert into vehiculo(placa_vehiculo, desc_vehiculo, imagen_vehiculo) values('$placaVehiculo', '$descVehiculo', '$imgVehiculo')");
 
     if($stmt->execute()){
       return "ok";
@@ -35,7 +32,7 @@ class ModeloVehiculo{
   }
 
   static public function mdlInfoVehiculo($id){
-    $stmt=Conexion::conectar()->prepare("select * from Vehiculo where id_Vehiculo=$id");
+    $stmt=Conexion::conectar()->prepare("select * from vehiculo where id_vehiculo=$id");
     $stmt->execute();
 
     return $stmt->fetch();
@@ -46,13 +43,13 @@ class ModeloVehiculo{
 
   static public function mdlEditVehiculo($data){
 
-    $dirVehiculo=$data["dirVehiculo"];
     $idVehiculo=$data["idVehiculo"];
-    $nombreVehiculo=$data["nombreVehiculo"];
-    $telVehiculo=$data["telVehiculo"];
+    $placaVehiculo=$data["placaVehiculo"];
+    $descVehiculo=$data["descVehiculo"];
+    $estadoVehiculo=$data["estadoVehiculo"];    
+    $imgVehiculo=$data["imgVehiculo"];
 
-
-    $stmt=Conexion::conectar()->prepare("update Vehiculo set direccion_Vehiculo='$dirVehiculo', nombre_Vehiculo='$nombreVehiculo', telefono_Vehiculo='$telVehiculo' where id_Vehiculo=$idVehiculo");
+    $stmt=Conexion::conectar()->prepare("update vehiculo set placa_vehiculo='$placaVehiculo', desc_vehiculo='$descVehiculo', imagen_vehiculo='$imgVehiculo', estado_vehiculo='$estadoVehiculo' where id_vehiculo=$idVehiculo");
 
     if($stmt->execute()){
       return "ok";

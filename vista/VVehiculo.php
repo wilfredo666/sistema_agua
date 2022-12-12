@@ -14,42 +14,57 @@
           <th>Placa</th>
           <th>Descripción</th>
           <th>Imagen</th>
+          <th>Estado</th>
           <td>
             <button class="btn btn-primary" onclick="MNuevoVehiculo()">Nuevo</button>
           </td>
         </tr>
       </thead>
       <tbody>
-        <?php 
-        $Vehiculo=ControladorVehiculo::ctrListaVehiculos();
+        <?php
+        $Vehiculo = ControladorVehiculo::ctrListaVehiculos();
 
-        foreach($Vehiculo as $value){
+        foreach ($Vehiculo as $value) {
         ?>
-        <tr>
-          <td><?php echo $value["placa_vehiculo"];?></td>
-          <td><?php echo $value["desc_vehiculo"];?></td>
-          <td><?php
-          if($value["imagen_vehiculo"]==""){
-            ?>
-            <img src="assest/dist/img/vehiculos/vehiculo_default.png" width='50'>
+          <tr>
+            <td><?php echo $value["placa_vehiculo"]; ?></td>
+            <td><?php echo $value["desc_vehiculo"]; ?></td>
+            <td><?php
+                if ($value["imagen_vehiculo"] == "") {
+                ?>
+                <img src="assest/dist/img/vehiculos/vehiculo_default.png" width='100'>
+              <?php
+                } else {
+              ?>
+                <img src='assest/dist/img/vehiculos/<?php echo $value["imagen_vehiculo"]; ?>' width='100'>
+              <?php
+                }
+              ?>
+            </td>
+
             <?php
-          }else{
+            if ($value["estado_vehiculo"] == 1) {
             ?>
-            <img src='assest/dist/img/vehiculos/<?php echo $value["imagen_vehiculo"];?>' width='50'>
+              <td> <span class="badge badge-success">Activo</span> </td>
             <?php
-          }
-            ?></td>
-          <td>
-            <div class="btn-group">
-              <button class="btn btn-secondary" onclick="MEditVehiculo('<?php echo $value["id_vehiculo"];?>')">
-                <i class="fas fa-edit"></i>
-              </button>
-              <button class="btn btn-danger" onclick="MEliVehiculo('<?php echo $value["id_vehiculo"];?>')">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
+            } else {
+            ?>
+              <td> <span class="badge badge-danger">Inactivo</span></td>
+            <?php
+            }
+            ?>
+
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-secondary" onclick="MEditVehiculo('<?php echo $value["id_vehiculo"]; ?>')">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger" onclick="MEliVehiculo('<?php echo $value["id_vehiculo"]; ?>')">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
 
         <?php
         }

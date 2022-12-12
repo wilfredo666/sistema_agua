@@ -46,7 +46,7 @@ function RegVehiculo(){
 
   $.ajax({
     type:"POST",
-    url:"controlador/VehiculoControlador.php?ctrRegVehiculo",
+    url:"controlador/vehiculoControlador.php?ctrRegVehiculo",
     data:formData,
     cache:false,
     contentType:false,
@@ -74,12 +74,10 @@ function RegVehiculo(){
       }
     }
   })
-
-
 }
 
 function MEditVehiculo(id){
-  $("#modal-lg").modal("show")
+  $("#modal-default").modal("show")
 
   var obj=""
   $.ajax({
@@ -87,7 +85,7 @@ function MEditVehiculo(id){
     url:"vista/Vehiculo/FEditVehiculo.php?id="+id,
     data:obj,
     success:function(data){
-      $("#content-lg").html(data)
+      $("#content-default").html(data)
     }
   })
 }
@@ -98,12 +96,13 @@ function EditVehiculo(){
 
   $.ajax({
     type:"POST",
-    url:"controlador/VehiculoControlador.php?ctrEditVehiculo",
+    url:"controlador/vehiculoControlador.php?ctrEditVehiculo",
     data:formData,
     cache:false,
     contentType:false,
     processData:false,
     success:function(data){
+      /* console.log(data); */
       if(data=="ok"){
         Swal.fire({
           icon: 'success',
@@ -180,9 +179,9 @@ function MEliVehiculo(id){
     }
   })
 }
-/*
 
-function previsualizar(){
+
+function previsualizar_vehiculo(){
   let imagen=document.getElementById("ImgVehiculo").files[0]
 
   if(imagen["type"]!="image/png" && imagen["type"]!="image/jpeg"){
@@ -211,4 +210,4 @@ function previsualizar(){
     })
   }
 }
-*/
+
