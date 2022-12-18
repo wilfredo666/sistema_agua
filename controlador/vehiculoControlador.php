@@ -21,6 +21,12 @@ class ControladorVehiculo{
     return $respuesta;
   }
 
+  /* para listar solo los vehiculos activos */
+  static public function ctrVehiculosActivos(){
+    $respuesta = ModeloVehiculo::mdlVehiculosActivos();
+    return $respuesta;
+  }
+
   static public function ctrRegVehiculo(){
     require "../modelo/vehiculoModelo.php";
     $imagen = $_FILES["ImgVehiculo"];

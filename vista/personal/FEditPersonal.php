@@ -84,12 +84,31 @@ $personal = ControladorPersonal::ctrInfoPersonal($id);
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label for="">Ubicación</label>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-4 text-center">
+
+
+                <label class="card-title">Estado</label> <br>
+                <div class="">
+
+                    <?php
+                    if ($personal["estado_personal"] == 1) {
+                    ?>
+                        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                    <?php
+                    } else {
+                    ?>
+                        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-on-color="success" data-off-color="danger">
+                    <?php
+                    }
+                    ?>
+                </div>
+
+
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -226,6 +245,10 @@ $personal = ControladorPersonal::ctrInfoPersonal($id);
             })
         })
 
+    })
+
+    $("input[data-bootstrap-switch]").each(function() {
+        $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
 </script>
 

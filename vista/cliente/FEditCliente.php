@@ -13,8 +13,9 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <form action="" id="FormEditCliente">
+<form action="" id="FormEditCliente">
+  <div class="modal-body">
+
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -88,11 +89,67 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
         </div>
       </div>
     </div>
-  </form>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <!-- <button type="button" class="btn btn-primary" onclick="EditCliente()">Actualizar</button> -->
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+  </div>
+</form>
 
-</div>
 
-<div class="modal-footer justify-content-between">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-  <button type="button" class="btn btn-primary" onclick="EditCliente()">Actualizar</button>
-</div>
+
+
+
+<script>
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        EditCliente()
+      }
+    })
+    $(document).ready(function() {
+      $("#FormEditCliente").validate({
+        rules: {
+          rsCliente: {
+            required: true,
+            minlength: 3
+          },
+          NitCiCliente: {
+            required: true,
+            minlength: 3
+          },
+          nombreCliente:{
+            required: true,
+            minlength: 3
+          },
+          dirCliente: {
+            minlength: 3
+          },
+          telCliente: {
+            minlength: 3
+          },
+          precioEntregaCli: {
+            required: true,
+          },
+
+          /* perfilUsuario:"required" */
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+          error.addClass('invalid-feedback')
+          element.closest('.form-group').append(error)
+        },
+
+        highlight: function(element, errorClass, validClass) {
+          $(element).addClass('is-invalid')
+          /* .is-invalid */
+        },
+
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).removeClass('is-invalid')
+        }
+      })
+    })
+  })
+</script>

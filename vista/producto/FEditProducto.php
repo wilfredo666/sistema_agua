@@ -14,8 +14,9 @@ $producto = ControladorProducto::ctrInfoProducto($id);
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <form action="" id="FormEditProducto" enctype="multipart/form-data">
+
+<form action="" id="FormEditProducto" enctype="multipart/form-data">
+  <div class="modal-body">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -61,12 +62,47 @@ $producto = ControladorProducto::ctrInfoProducto($id);
         </div>
       </div>
     </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <!-- <button type="button" class="btn btn-primary" onclick="EditProducto()">Actualizar</button> -->
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+  </div>
+</form>
 
-  </form>
-
-</div>
-
-<div class="modal-footer justify-content-between">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-  <button type="button" class="btn btn-primary" onclick="EditProducto()">Actualizar</button>
-</div>
+<script>
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        EditProducto()
+      }
+    })
+    $(document).ready(function() {
+      $("#FormEditProducto").validate({
+        rules: {
+          codProducto: {
+            required: true,
+            minlength: 3
+          },
+          descProducto: {
+            required: true,
+            minlength: 3
+          },
+          /* perfilUsuario:"required" */
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+          error.addClass('invalid-feedback')
+          element.closest('.form-group').append(error)
+        },
+        highlight: function(element, errorClass, validClass) {
+          $(element).addClass('is-invalid')
+          /* .is-invalid */
+        },
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).removeClass('is-invalid')
+        }
+      })
+    })
+  })
+</script>

@@ -42,7 +42,7 @@ foreach($productos as $value){
   $pdf->Cell(26, 8, $value["cantProducto"],1,0);
   $pdf->Cell(27, 8, $value["precioProducto"],1,0);
   $pdf->Cell(27, 8, $value["precioTotalPro"],1,1);
-  $total=number_format($total+$value["precioTotalPro"],2,".");
+  /* $total=number_format($total+$value["precioTotalPro"],2,"."); */
 }
 
 $pdf->SetFont("Arial", "B", 10);
@@ -83,7 +83,7 @@ foreach($productos as $value){
   $pdf->Cell(26, 8, $value["cantProducto"],1,0);
   $pdf->Cell(27, 8, $value["precioProducto"],1,0);
   $pdf->Cell(27, 8, $value["precioTotalPro"],1,1);
-  $total=number_format($total+$value["precioTotalPro"],2,".");
+  /* $total=number_format($total+$value["precioTotalPro"],2,"."); */
 }
 
 $pdf->SetFont("Arial", "B", 10);

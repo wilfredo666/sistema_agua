@@ -55,6 +55,8 @@
 <script src="assest/plugins/select2/js/select2.full.min.js"></script>
 <!-- dropzonejs -->
 <script src="assest/plugins/dropzone/min/dropzone.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="assest/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
 <!--====================
 seccion de modals

@@ -63,7 +63,7 @@
             <select class="form-control select2bs4" name="vehiculo" id="vehiculo">
               <option>Seleccionar vehiculo</option>
               <?php
-              $vehiculo = ControladorVehiculo::ctrListaVehiculos();
+              $vehiculo = ControladorVehiculo::ctrVehiculosActivos();
               foreach ($vehiculo as $value) {
               ?>
                 <option value="<?php echo $value["id_vehiculo"]; ?>"><?php echo $value["desc_vehiculo"]; ?></option>
