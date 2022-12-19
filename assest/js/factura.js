@@ -24,13 +24,10 @@ function agregarCarrito(id){
     data:obj,
     dataType:"json",
     success:function(data){
-      let precioPro=data["precio_venta_producto"]
       let objDetalle={
         idProducto:data["id_producto"],
         descProducto:data["nombre_producto"],
         cantProducto:1,
-        precioProducto:precioPro,
-        precioTotalPro:precioPro
       }
 
       arregloCarrito.push(objDetalle)
@@ -68,7 +65,6 @@ function dibujarTablaCarrito(){
     listaDetalle.appendChild(fila)
   })
 
-  calcularTotal()
 }
 
 function eliminarCarrito(idProd){
@@ -96,6 +92,7 @@ function calcularPreProd(idProd){
   dibujarTablaCarrito()
 }
 
+/*deshuso*/
 function calcularTotal(){
   let totalCarrito=0
 
@@ -135,7 +132,8 @@ function emitirNotaEntrega(){
     data:obj,
     cache:false,
     success:function(data){
-      if(data=="ok"){
+      console.log(data)
+/*      if(data=="ok"){
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,
@@ -153,7 +151,7 @@ function emitirNotaEntrega(){
           showConfirmButton: false,
           timer:1500
         })
-      }
+      }*/
     }
   })
 
@@ -292,7 +290,7 @@ function MEliFactura(cuf){
 }
 
 function MVerNotaEntrega(id){
-    $("#modal-xl").modal("show")
+  $("#modal-xl").modal("show")
 
   var obj=""
   $.ajax({

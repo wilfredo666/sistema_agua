@@ -94,18 +94,8 @@
                 </tr>
               </thead>
               <tbody id="listaDetalle">
-
               </tbody>
-              <tfoot>
-                <!-- <tr>
-                  <th>
-                    Total
-                  </th>
-                  <td></td>
-                  <td></td>
-                  <td id="totalNE" style="text-decoration: underline"></td>
-                </tr> -->
-              </tfoot>
+
             </table>
           </div>
         </div>

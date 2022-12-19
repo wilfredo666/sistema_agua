@@ -32,7 +32,6 @@ foreach($producto as $key => $value){
   $datosJson.='[
         "'.$value["cod_producto"].'",
         "'.$value["nombre_producto"].'",
-        
         "'.$imagen.'",
         "'.$disponible.'",
         "'.$botones.'"
