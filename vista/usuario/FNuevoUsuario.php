@@ -49,6 +49,7 @@
 <script>
   $(function(){
     $.validator.setDefaults({
+      
       submitHandler:function(){
         RegUsuario()
       }
