@@ -53,13 +53,13 @@ $productos=json_decode($NotaVenta["detalle_ne"],true);
 
     </div>
     <div class="col-sm-6">
-      <table class="table">
-        <thead>
+      <table class="table ">
+        <thead class="bg-gradient-secondary">
           <tr>
             <th style="width:200px">Descripción</th>
             <th style="width:50px">Cantidad</th>
-            <th>Precio</th>
-            <th>P. Total</th>
+            <!-- <th>Precio</th>
+            <th>P. Total</th> -->
           </tr>
         </thead>
         <tbody>
@@ -70,17 +70,16 @@ $productos=json_decode($NotaVenta["detalle_ne"],true);
           <tr>
             <td><?php echo $value["descProducto"];?></td>
             <td><?php echo $value["cantProducto"];?></td>
-            <td><?php echo $value["precioProducto"];?></td>
-            <td><?php echo $value["precioTotalPro"];?></td>
+            
           </tr>
           <?php
-            $total=$total+$value["precioTotalPro"];
+           
           }
           ?>
-          <tr>
+          <!-- <tr>
             <td colspan="3"><b>Total</b></td>
-            <td style="text-decoration: underline"><?php echo number_format($total, 2, '.');?></td>
-          </tr>
+            <td style="text-decoration: underline"></td>
+          </tr> -->
 
         </tbody>
       </table>

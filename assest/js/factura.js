@@ -1,8 +1,8 @@
-function descPreProducto(){
-  let descProducto=parseFloat(document.getElementById("descProducto").value)
-  let preUnitActual=parseFloat(document.getElementById("preUnitActual").value)
+function descPreProducto() {
+  let descProducto = parseFloat(document.getElementById("descProducto").value)
+  let preUnitActual = parseFloat(document.getElementById("preUnitActual").value)
 
-  document.getElementById("preUnitario").value=parseFloat(preUnitActual-descProducto)
+  document.getElementById("preUnitario").value = parseFloat(preUnitActual - descProducto)
 
   calcularPreProd()
 }
@@ -10,24 +10,24 @@ function descPreProducto(){
 /*==========
 carrito
 ============*/
-var arregloCarrito=[]
-var listaDetalle=document.getElementById("listaDetalle")
+var arregloCarrito = []
+var listaDetalle = document.getElementById("listaDetalle")
 
-function agregarCarrito(id){
-  var obj={
-    idProducto:id
+function agregarCarrito(id) {
+  var obj = {
+    idProducto: id
   }
 
   $.ajax({
-    type:"POST",
-    url:"controlador/productoControlador.php?ctrBusProducto",
-    data:obj,
-    dataType:"json",
-    success:function(data){
-      let objDetalle={
-        idProducto:data["id_producto"],
-        descProducto:data["nombre_producto"],
-        cantProducto:1,
+    type: "POST",
+    url: "controlador/productoControlador.php?ctrBusProducto",
+    data: obj,
+    dataType: "json",
+    success: function (data) {
+      let objDetalle = {
+        idProducto: data["id_producto"],
+        descProducto: data["nombre_producto"],
+        cantProducto: 1,
       }
 
       arregloCarrito.push(objDetalle)
@@ -38,24 +38,24 @@ function agregarCarrito(id){
   //calcularTotal()
 }
 
-function dibujarTablaCarrito(){
+function dibujarTablaCarrito() {
 
-  listaDetalle.innerHTML=""
-  arregloCarrito.forEach((detalle)=>{
-    let fila=document.createElement("tr")
+  listaDetalle.innerHTML = ""
+  arregloCarrito.forEach((detalle) => {
+    let fila = document.createElement("tr")
 
-    fila.innerHTML='<td>'+detalle.descProducto+'</td>'+
-      '<td><input type="number" class="form-control form-control-sm" id="cantPro_'+detalle.idProducto+'" value="'+detalle.cantProducto+'" onkeyup="calcularPreProd('+detalle.idProducto+')">'+'</td>'/* +
+    fila.innerHTML = '<td>' + detalle.descProducto + '</td>' +
+      '<td><input type="number" class="form-control form-control-sm" id="cantPro_' + detalle.idProducto + '" value="' + detalle.cantProducto + '" onkeyup="calcularPreProd(' + detalle.idProducto + ')">' + '</td>'/* +
       '<td>'+detalle.precioProducto+'</td>'+
       '<td>'+detalle.precioTotalPro+'</td>' */
 
-    let tdEliminar=document.createElement("td")
-    let botonEliminar=document.createElement("button")
+    let tdEliminar = document.createElement("td")
+    let botonEliminar = document.createElement("button")
     botonEliminar.classList.add("btn", "btn-danger", "btn-sm", "borrar")
-    let icono=document.createElement("i")
+    let icono = document.createElement("i")
     icono.classList.add("fas", "fa-trash")
     botonEliminar.appendChild(icono)
-    botonEliminar.onclick=()=>{
+    botonEliminar.onclick = () => {
       eliminarCarrito(detalle.idProducto)
     }
 
@@ -67,10 +67,10 @@ function dibujarTablaCarrito(){
 
 }
 
-function eliminarCarrito(idProd){
+function eliminarCarrito(idProd) {
 
-  arregloCarrito=arregloCarrito.filter((detalle)=>{
-    if(idProd!=detalle.idProducto){
+  arregloCarrito = arregloCarrito.filter((detalle) => {
+    if (idProd != detalle.idProducto) {
       return detalle
     }
   })
@@ -79,13 +79,13 @@ function eliminarCarrito(idProd){
 
 }
 
-function calcularPreProd(idProd){
-  let cantPro=parseInt(document.getElementById("cantPro_"+idProd).value)
+function calcularPreProd(idProd) {
+  let cantPro = parseInt(document.getElementById("cantPro_" + idProd).value)
 
-  arregloCarrito.map(function(dato){
-    if(dato.idProducto==idProd){
-      dato.precioTotalPro=parseFloat(dato.precioProducto*cantPro).toFixed(2)
-      dato.cantProducto=cantPro
+  arregloCarrito.map(function (dato) {
+    if (dato.idProducto == idProd) {
+      dato.precioTotalPro = parseFloat(dato.precioProducto * cantPro).toFixed(2)
+      dato.cantProducto = cantPro
     }
     return dato
   })
@@ -93,175 +93,187 @@ function calcularPreProd(idProd){
 }
 
 /*deshuso*/
-function calcularTotal(){
-  let totalCarrito=0
+function calcularTotal() {
+  let totalCarrito = 0
 
-  for(var i=0; i<arregloCarrito.length; i++){
-    totalCarrito=totalCarrito+parseFloat(arregloCarrito[i].precioTotalPro)
+  for (var i = 0; i < arregloCarrito.length; i++) {
+    totalCarrito = totalCarrito + parseFloat(arregloCarrito[i].precioTotalPro)
   }
 
   /* document.getElementById("totalNE").innerHTML=(totalCarrito).toFixed(2) */
 }
 
-function validarFormulario(){
-  let numFactura=document.getElementById("numFactura").value
+function validarFormulario() {
+  let numFactura = document.getElementById("numFactura").value
 
-  if(numFactura==null || numFactura.length==0 || /^\s+$/.test(numFactura)){
-    document.getElementById("error-numFactura").innerHTML="El campo #Factura tiene datos incorrectos"
+  if (numFactura == null || numFactura.length == 0 || /^\s+$/.test(numFactura)) {
+    document.getElementById("error-numFactura").innerHTML = "El campo #Factura tiene datos incorrectos"
     return false
   }
 
   return true
 }
 
-function emitirNotaEntrega(){
-  let chofer=parseInt(document.getElementById("chofer").value)
-  let vehiculo=parseInt(document.getElementById("vehiculo").value)
-  let zonaVenta=document.getElementById("zonaVenta").value
+function emitirNotaEntrega() {
 
-  let obj={
-    "chofer":chofer,
-    "vehiculo":vehiculo,
-    "zonaVenta":zonaVenta,
-    "productos":JSON.stringify(arregloCarrito)
-  }
+  let chofer = parseInt(document.getElementById("chofer").value)
+  let vehiculo = parseInt(document.getElementById("vehiculo").value)
+  let zonaVenta = document.getElementById("zonaVenta").value
 
-  $.ajax({
-    type:"POST",
-    url:"controlador/ventaControlador.php?ctrRegNotaVenta",
-    data:obj,
-    cache:false,
-    success:function(data){
-      console.log(data)
-/*      if(data=="ok"){
-        Swal.fire({
-          icon: 'success',
-          showConfirmButton: false,
-          title: 'Nota de Entrega registrada',
-          timer: 1000
-        })
-        setTimeout(function(){
-          location.reload()
-        },1200)
-      }else{
-        Swal.fire({
-          icon:'error',
-          title:'Error!',
-          text:'Error de registro',
-          showConfirmButton: false,
-          timer:1500
-        })
-      }*/
+  let selectConductor = document.getElementById("chofer").selectedIndex;
+  let selectVehiculo = document.getElementById("vehiculo").selectedIndex;
+  let selectZonaVenta=document.getElementById("zonaVenta").value
+
+  if (selectConductor == null || selectConductor == 0) {
+    document.getElementById("error-conductor").innerHTML = "Debe seleccionar un conductor"
+  }if (selectVehiculo == null || selectVehiculo == 0) {
+    document.getElementById("error-vehiculo").innerHTML = "Debe seleccionar un vehículo"
+  }if(selectZonaVenta == null || selectZonaVenta.length == 0){
+    document.getElementById("error-zona").innerHTML="El campo Zona de Venta no puede estar vacío"
+  } else {
+    let obj = {
+      "chofer": chofer,
+      "vehiculo": vehiculo,
+      "zonaVenta": zonaVenta,
+      "productos": JSON.stringify(arregloCarrito)
     }
-  })
 
+    $.ajax({
+      type: "POST",
+      url: "controlador/ventaControlador.php?ctrRegNotaVenta",
+      data: obj,
+      cache: false,
+      success: function (data) {
+        console.log(data)
+        if (data == "ok") {
+          Swal.fire({
+            icon: 'success',
+            showConfirmButton: false,
+            title: 'Nota de Entrega registrada',
+            timer: 1000
+          })
+          setTimeout(function () {
+            location.reload()
+          }, 1200)
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Error de registro',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      }
+    })
+  }
 }
 
-function registroFactura(datos){
+function registroFactura(datos) {
 
-  let usuarioLogin=document.getElementById("usuarioLogin").innerHTML
-  let totApagar=parseFloat(document.getElementById("totApagar").value)
-  let descAdicional=parseFloat(document.getElementById("descAdicional").value)
-  let subTotal=parseFloat(document.getElementById("subTotal").value)
-  let fechaEmision=transformaFecha(datos["sentDate"])
+  let usuarioLogin = document.getElementById("usuarioLogin").innerHTML
+  let totApagar = parseFloat(document.getElementById("totApagar").value)
+  let descAdicional = parseFloat(document.getElementById("descAdicional").value)
+  let subTotal = parseFloat(document.getElementById("subTotal").value)
+  let fechaEmision = transformaFecha(datos["sentDate"])
 
-  let obj={
-    "numFactura":numFactura,
-    "idCliente":idCliente,
-    "productos":JSON.stringify(arregloCarrito),
-    "subTotal":subTotal,
-    "descAdicional":descAdicional,
-    "totApagar":totApagar,
-    "fechaEmision":fechaEmision,
-    "cufd":cufd,
-    "cuf":datos["cuf"],
-    "xml":datos["xml"],
-    "usuarioLogin":usuarioLogin,
-    "leyenda":leyenda
+  let obj = {
+    "numFactura": numFactura,
+    "idCliente": idCliente,
+    "productos": JSON.stringify(arregloCarrito),
+    "subTotal": subTotal,
+    "descAdicional": descAdicional,
+    "totApagar": totApagar,
+    "fechaEmision": fechaEmision,
+    "cufd": cufd,
+    "cuf": datos["cuf"],
+    "xml": datos["xml"],
+    "usuarioLogin": usuarioLogin,
+    "leyenda": leyenda
   }
 
   $.ajax({
-    type:"POST",
-    url:"controlador/ventaControlador.php?ctrRegistroFactura",
-    data:obj,
-    cache:false,
-    success:function(data){
+    type: "POST",
+    url: "controlador/ventaControlador.php?ctrRegistroFactura",
+    data: obj,
+    cache: false,
+    success: function (data) {
 
-      if(data=="ok"){
+      if (data == "ok") {
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,
           title: 'Factura registrada',
           timer: 1000
         })
-        setTimeout(function(){
+        setTimeout(function () {
           location.reload()
-        },1200)
-      }else{
+        }, 1200)
+      } else {
         Swal.fire({
-          icon:'error',
-          title:'Error!',
-          text:'Error de registro',
+          icon: 'error',
+          title: 'Error!',
+          text: 'Error de registro',
           showConfirmButton: false,
-          timer:1500
+          timer: 1500
         })
       }
     }
   })
 }
 
-function MVerFactura(id){
+function MVerFactura(id) {
   $("#modal-xl").modal("show")
 
-  var obj=""
+  var obj = ""
   $.ajax({
-    type:"POST",
-    url:"vista/factura/VerFactura.php?id="+id,
-    data:obj,
-    success:function(data){
+    type: "POST",
+    url: "vista/factura/VerFactura.php?id=" + id,
+    data: obj,
+    success: function (data) {
       $("#content-xl").html(data)
     }
   })
 }
 
-function MEliFactura(cuf){
+function MEliFactura(cuf) {
 
-  var obj={
+  var obj = {
     codigoAmbiente: 2,
     codigoPuntoVenta: 0,
     codigoPuntoVentaSpecified: true,
     codigoSistema: codSistema,
     codigoSucursal: 0,
-    nit:nitEmpresa,
-    codigoDocumentoSector:1,
-    codigoEmision:1,
+    nit: nitEmpresa,
+    codigoDocumentoSector: 1,
+    codigoEmision: 1,
     codigoModalidad: 2,
-    cufd:cufd,
-    cuis:cuis,
-    tipoFacturaDocumento:1,
-    codigoMotivo:1,
-    cuf:cuf
+    cufd: cufd,
+    cuis: cuis,
+    tipoFacturaDocumento: 1,
+    codigoMotivo: 1,
+    cuf: cuf
   }
 
   Swal.fire({
-    title:'Esta seguro de anular esta Factura?',
-    showDenyButton:true,
-    showCancelButton:false,
-    confirmButtonText:'Confirmar',
-    denyButtonText:'Cancelar'    
-  }).then((result)=>{
-    if(result.isConfirmed){
+    title: 'Esta seguro de anular esta Factura?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Confirmar',
+    denyButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
 
       $.ajax({
-        type:"POST",
-        url:host+"/api/CompraVenta/anulacion",
-        data:JSON.stringify(obj),
-        cache:false,
-        contentType:"application/json",
-        processData:false,
-        success:function(data){
+        type: "POST",
+        url: host + "/api/CompraVenta/anulacion",
+        data: JSON.stringify(obj),
+        cache: false,
+        contentType: "application/json",
+        processData: false,
+        success: function (data) {
           console.log(data)
-          if(data["codigoEstado"]==905){
+          if (data["codigoEstado"] == 905) {
             anularFactura(cuf)
             Swal.fire({
               icon: 'success',
@@ -269,16 +281,16 @@ function MEliFactura(cuf){
               title: 'Factura anulada',
               timer: 1000
             })
-            setTimeout(function(){
+            setTimeout(function () {
               location.reload()
-            },1200)
-          }else{
+            }, 1200)
+          } else {
             Swal.fire({
-              icon:'error',
-              title:'Error!!!',
-              text:'Anulacion rechazada',
-              showConfirmButton:false,
-              timer:1500
+              icon: 'error',
+              title: 'Error!!!',
+              text: 'Anulacion rechazada',
+              showConfirmButton: false,
+              timer: 1500
             })
           }
 
@@ -289,16 +301,128 @@ function MEliFactura(cuf){
   })
 }
 
-function MVerNotaEntrega(id){
+function MVerNotaEntrega(id) {
   $("#modal-xl").modal("show")
 
-  var obj=""
+  var obj = ""
   $.ajax({
-    type:"POST",
-    url:"vista/factura/VerNotaEntrega.php?id="+id,
-    data:obj,
-    success:function(data){
+    type: "POST",
+    url: "vista/factura/VerNotaEntrega.php?id=" + id,
+    data: obj,
+    success: function (data) {
       $("#content-xl").html(data)
     }
   })
+}
+
+/* Buscar datos del cliente */
+function busCliente(){
+  let nitCliente=document.getElementById("nitCliente").value
+/*   console.log(nitCliente) */
+  var obj={
+    nitCliente:nitCliente
+  }
+
+  $.ajax({
+    type:"POST",
+    url:"controlador/clienteControlador.php?ctrBusCliente",
+    data:obj,
+    dataType:"json",
+    success:function(data){
+      /* console.log(data) */
+      document.getElementById("rsCliente").value=data["razon_social_cliente"]
+      document.getElementById("idCliente").value=data["id_cliente"]
+    }
+  })
+}
+
+/*==========
+carrito2
+============*/
+var arregloCarrito2 = []
+var listaDetalle2 = document.getElementById("listaDetalle2")
+
+function agregarCarrito2(id) {
+  var obj = {
+    idProducto: id
+  }
+
+  console.log(id);
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/productoControlador.php?ctrBusProducto",
+    data: obj,
+    dataType: "json",
+    success: function (data) {
+      let objDetalle = {
+        idProducto: data["id_producto"],
+        descProducto: data["nombre_producto"],
+        cantProducto: 1,
+      }
+
+      arregloCarrito2.push(objDetalle)
+      dibujarTablaCarrito2()
+    }
+  })
+}
+
+function dibujarTablaCarrito2() {
+
+  listaDetalle2.innerHTML = ""
+  arregloCarrito2.forEach((detalle) => {
+    let fila = document.createElement("tr")
+
+    fila.innerHTML = '<td>' + detalle.descProducto + '</td>' +
+
+      '<td><input type="number" class="form-control form-control-sm" id="cantPro_' + detalle.idProducto + '" value="' + detalle.cantProducto + '" onkeyup="calcularPreProd(' + detalle.idProducto + ')">' + '</td>' +
+
+      '<td><input type="number" class="form-control form-control-sm" id="preUnit_' + detalle.idProducto + '" value="' + 0.00 + '" onkeyup="calcularPreProdVenta(' + detalle.idProducto + ')">' + '</td>' +
+
+      '<td><input type="number" class="form-control form-control-sm" id="descuento_' + detalle.idProducto + '" value="' +  0.00  + '" onkeyup="calcularPreProdVenta(' + detalle.idProducto + ')">' + '</td>' +  
+
+      '<td><input type="number" class="form-control form-control-sm" id="total_' + detalle.idProducto + '" value="' +  0.00  + '" onkeyup="calcularPreProdVenta(' + detalle.idProducto + ')">' + '</td>'   
+      /* +
+      '<td>'+detalle.precioProducto+'</td>'+
+      '<td>'+detalle.precioTotalPro+'</td>' */
+
+    let tdEliminar = document.createElement("td")
+    let botonEliminar = document.createElement("button")
+    botonEliminar.classList.add("btn", "btn-danger", "btn-sm", "borrar")
+    let icono = document.createElement("i")
+    icono.classList.add("fas", "fa-trash")
+    botonEliminar.appendChild(icono)
+    botonEliminar.onclick = () => {
+      eliminarCarrito2(detalle.idProducto)
+    }
+
+    tdEliminar.appendChild(botonEliminar)
+    fila.appendChild(tdEliminar)
+
+    listaDetalle2.appendChild(fila)
+  })
+}
+
+function eliminarCarrito2(idProd) {
+
+  arregloCarrito2 = arregloCarrito2.filter((detalle) => {
+    if (idProd != detalle.idProducto) {
+      return detalle
+    }
+  })
+  dibujarTablaCarrito2()
+}
+/* arreglar funcion calcular precio total */
+function calcularPreProdVenta(idProd) {
+  let preUnit = parseInt(document.getElementById("preUnit_" + idProd).value)
+
+  arregloCarrito2.map(function (dato) {
+    console.log(dato);
+    /* if (dato.idProducto == idProd) {
+      dato.precioTotalPro = parseFloat(dato.precioProducto * cantPro).toFixed(2)
+      dato.cantProducto = preUnit
+    }
+    return dato */
+  })
+  dibujarTablaCarrito2()
 }

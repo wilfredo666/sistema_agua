@@ -54,6 +54,7 @@
               }
               ?>
             </select>
+            <span class="text-danger chartjs-render-monitor" id="error-conductor"></span>
           </div>
 
           <div class="input-group mb-3">
@@ -71,7 +72,7 @@
               }
               ?>
             </select>
-
+            <span class="text-danger chartjs-render-monitor" id="error-vehiculo"></span>
           </div>
 
           <div class="input-group mb-3">
@@ -79,6 +80,7 @@
               <span class="input-group-text">Zona de venta</span>
             </div>
             <input type="text" class="form-control" name="zonaVenta" id="zonaVenta" placeholder="Ingresar la zona de venta">
+            <span class="text-danger chartjs-render-monitor" id="error-zona"></span>
           </div>
 
 

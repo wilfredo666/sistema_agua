@@ -97,9 +97,7 @@ class ControladorCliente{
     $nitCliente=$_POST["nitCliente"];
     
     $respuesta=ModeloCliente::mdlBusCliente($nitCliente);
-
     echo json_encode($respuesta);
-    
   }
   
   static public function ctrCantidadClientes(){

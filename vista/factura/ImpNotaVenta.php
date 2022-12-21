@@ -29,25 +29,20 @@ $pdf->Cell(180, 5, "", 0, 1);
 
 $pdf->SetFont('Arial', 'B', 10);
 
-$pdf->Cell(100,8, utf8_decode("Descripción"),1,0,"L");
-$pdf->Cell(26, 8, "Cantidad", 1, 0, "L");
-$pdf->Cell(27, 8, "P. Unitario", 1, 0, "L");
-$pdf->Cell(27, 8, "P. Total", 1, 1, "L");
+$pdf->Cell(140,8, utf8_decode("Descripción"),1,0,"L");
+$pdf->Cell(26, 8, "Cantidad", 1, 1, "L");
+
 
 $pdf->SetFont("Arial", "", 10);
 $pdf->setTextColor(0,0,0);
 $total=0;
 foreach($productos as $value){
-  $pdf->Cell(100, 8, $value["descProducto"],1,0);
-  $pdf->Cell(26, 8, $value["cantProducto"],1,0);
-  $pdf->Cell(27, 8, $value["precioProducto"],1,0);
-  $pdf->Cell(27, 8, $value["precioTotalPro"],1,1);
-  /* $total=number_format($total+$value["precioTotalPro"],2,"."); */
+  $pdf->Cell(140, 8, utf8_decode($value["descProducto"]),1,0);
+  $pdf->Cell(26, 8, $value["cantProducto"],1,1);
+
 }
 
-$pdf->SetFont("Arial", "B", 10);
-$pdf->cell(153,8,"Total (Bs.) ",1, 0);
-$pdf->cell(27,8,$total,1, 0);
+
 /*==============
 segunda parte
 ==============*/
@@ -70,25 +65,25 @@ $pdf->Cell(180, 5, "", 0, 1);
 
 $pdf->SetFont('Arial', 'B', 10);
 
-$pdf->Cell(100,8, utf8_decode("Descripción"),1,0,"L");
-$pdf->Cell(26, 8, "Cantidad", 1, 0, "L");
-$pdf->Cell(27, 8, "P. Unitario", 1, 0, "L");
-$pdf->Cell(27, 8, "P. Total", 1, 1, "L");
+$pdf->Cell(140,8, utf8_decode("Descripción"),1,0,"L");
+$pdf->Cell(26, 8, "Cantidad", 1, 1, "L");
+/* $pdf->Cell(27, 8, "P. Unitario", 1, 0, "L");
+$pdf->Cell(27, 8, "P. Total", 1, 1, "L"); */
 
 $pdf->SetFont("Arial", "", 10);
 $pdf->setTextColor(0,0,0);
 $total=0;
 foreach($productos as $value){
-  $pdf->Cell(100, 8, $value["descProducto"],1,0);
-  $pdf->Cell(26, 8, $value["cantProducto"],1,0);
-  $pdf->Cell(27, 8, $value["precioProducto"],1,0);
-  $pdf->Cell(27, 8, $value["precioTotalPro"],1,1);
+  $pdf->Cell(140, 8, utf8_decode ($value["descProducto"]),1,0);
+  $pdf->Cell(26, 8, $value["cantProducto"],1,1);
+  /* $pdf->Cell(27, 8, $value["precioProducto"],1,0);
+  $pdf->Cell(27, 8, $value["precioTotalPro"],1,1); */
   /* $total=number_format($total+$value["precioTotalPro"],2,"."); */
 }
 
-$pdf->SetFont("Arial", "B", 10);
+/* $pdf->SetFont("Arial", "B", 10);
 $pdf->cell(153,8,"Total (Bs.) ",1, 0);
-$pdf->cell(27,8,$total,1, 0);
+$pdf->cell(27,8,$total,1, 0); */
 $pdf->Output();
 
 ?>
