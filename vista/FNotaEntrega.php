@@ -2,8 +2,8 @@
   <section class="content-header"></section>
   <section class="content">
 
-    <!--encabezado-->
-    <div class="card card-primary card-outline">
+  <!--encabezado-->
+    <form id="FNotaEntrega" class="card card-primary card-outline">
       <div class="card-header">
         <h4 class="card-title" style="font-size:20px;">Nota de Entrega</h4>
         <div class="card-tools">
@@ -25,7 +25,6 @@
                 <tr>
                   <th>Cod. Producto</th>
                   <th>Descripción</th>
-                  <!-- <th>Precio</th> -->
                   <td></td>
                 </tr>
               </thead>
@@ -36,77 +35,79 @@
           </div>
 
         </div>
+         
+          <div id="FNotaEntrega" class="col-md-6">
 
-        <div class="col-md-6">
-
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Chofer</span>
-            </div>
-            <select class="form-control select2bs4" name="chofer" id="chofer">
-              <option value="">Seleccionar chofer</option>
-              <?php
-              $chofer = ControladorPersonal::ctrInfoChoferes();
-              foreach ($chofer as $value) {
-              ?>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Chofer</span>
+              </div>
+              <select class="form-control select2bs4" name="chofer" id="chofer">
+                <option value="">Seleccionar chofer</option>
+                <?php
+                $chofer = ControladorPersonal::ctrInfoChoferes();
+                foreach ($chofer as $value) {
+                ?>
                 <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>
-              <?php
-              }
-              ?>
-            </select>
-            <span class="text-danger chartjs-render-monitor" id="error-conductor"></span>
-          </div>
+                <?php
+                }
+                ?>
+              </select>
 
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Vehiculo</span>
             </div>
-            <select class="form-control select2bs4" name="vehiculo" id="vehiculo">
-              <option>Seleccionar vehiculo</option>
-              <?php
-              $vehiculo = ControladorVehiculo::ctrVehiculosActivos();
-              foreach ($vehiculo as $value) {
-              ?>
+            <!--<span class="text-danger chartjs-render-monitor" id="error-conductor"></span>-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Vehiculo</span>
+              </div>
+              <select class="form-control select2bs4" name="vehiculo" id="vehiculo">
+                <option value="">Seleccionar vehiculo</option>
+                <?php
+                $vehiculo = ControladorVehiculo::ctrVehiculosActivos();
+                foreach ($vehiculo as $value) {
+                ?>
                 <option value="<?php echo $value["id_vehiculo"]; ?>"><?php echo $value["desc_vehiculo"]; ?></option>
-              <?php
-              }
-              ?>
-            </select>
-            <span class="text-danger chartjs-render-monitor" id="error-vehiculo"></span>
-          </div>
+                <?php
+                }
+                ?>
+              </select>
 
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Zona de venta</span>
             </div>
-            <input type="text" class="form-control" name="zonaVenta" id="zonaVenta" placeholder="Ingresar la zona de venta">
-            <span class="text-danger chartjs-render-monitor" id="error-zona"></span>
+            <!--  <span class="text-danger chartjs-render-monitor" id="error-vehiculo"></span>-->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Zona de venta</span>
+              </div>
+              <input type="text" class="form-control" name="zonaVenta" id="zonaVenta" placeholder="Ingresar la zona de venta">
+
+            </div>
+            <!--<p class="text-danger chartjs-render-monitor" id="error-zona"></p>-->
+
+
+            <div class="form-group">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width:300px">Descripción</th>
+                    <th style="width:50px">Cantidad</th>
+
+                    <td>&nbsp;</td>
+                  </tr>
+                </thead>
+                <tbody id="listaDetalle">
+                </tbody>
+
+              </table>
+            </div>
           </div>
 
-
-          <div class="form-group">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th style="width:200px">Descripción</th>
-                  <th style="width:50px">Cantidad</th>
-                  <!-- <th>Precio</th>
-                  <th>P. Total</th> -->
-                  <td>&nbsp;</td>
-                </tr>
-              </thead>
-              <tbody id="listaDetalle">
-              </tbody>
-
-            </table>
           </div>
+
+        <div class="card-footer">
+          <button class="btn btn-success float-right" onclick="emitirNotaEntrega()">Guardar</button>
         </div>
-
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-success float-right" onclick="emitirNotaEntrega()">Guardar</button>
-      </div>
-    </div>
-
+    
+    </form>
   </section>
 </div>
+

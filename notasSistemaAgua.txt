@@ -50,3 +50,60 @@ dudas
 </div>-->
 
 agregarCarrito(".$value['id_producto'].")
+
+
+
+function emitirNotaEntrega() {
+
+/*  let chofer = parseInt(document.getElementById("chofer").value)
+  let vehiculo = parseInt(document.getElementById("vehiculo").value)
+  let zonaVenta = document.getElementById("zonaVenta").value
+
+  let selectConductor = document.getElementById("chofer").selectedIndex;
+  let selectVehiculo = document.getElementById("vehiculo").selectedIndex;
+  let selectZonaVenta=document.getElementById("zonaVenta").value
+
+  if (selectConductor == null || selectConductor == 0) {
+    document.getElementById("error-conductor").innerHTML = "Debe seleccionar un conductor"
+  }if (selectVehiculo == null || selectVehiculo == 0) {
+    document.getElementById("error-vehiculo").innerHTML = "Debe seleccionar un vehículo"
+  }if(selectZonaVenta == null || selectZonaVenta.length == 0){
+    document.getElementById("error-zona").innerHTML="El campo Zona de Venta no puede estar vacío"
+  } else {*/
+    let obj = {
+      "chofer": chofer,
+      "vehiculo": vehiculo,
+      "zonaVenta": zonaVenta,
+      "productos": JSON.stringify(arregloCarrito)
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "controlador/ventaControlador.php?ctrRegNotaVenta",
+      data: obj,
+      cache: false,
+      success: function (data) {
+
+        if (data == "ok") {
+          Swal.fire({
+            icon: 'success',
+            showConfirmButton: false,
+            title: 'Nota de Entrega registrada',
+            timer: 1000
+          })
+          setTimeout(function () {
+            location.reload()
+          }, 1200)
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Error de registro',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      }
+    })
+
+}

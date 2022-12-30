@@ -45,9 +45,7 @@ function dibujarTablaCarrito() {
     let fila = document.createElement("tr")
 
     fila.innerHTML = '<td>' + detalle.descProducto + '</td>' +
-      '<td><input type="number" class="form-control form-control-sm" id="cantPro_' + detalle.idProducto + '" value="' + detalle.cantProducto + '" onkeyup="calcularPreProd(' + detalle.idProducto + ')">' + '</td>'/* +
-      '<td>'+detalle.precioProducto+'</td>'+
-      '<td>'+detalle.precioTotalPro+'</td>' */
+      '<td><input type="number" class="form-control form-control-sm" id="cantPro_' + detalle.idProducto + '" value="' + detalle.cantProducto + '" onkeyup="calcularPreProd(' + detalle.idProducto + ')">' + '</td>'
 
     let tdEliminar = document.createElement("td")
     let botonEliminar = document.createElement("button")
@@ -79,17 +77,18 @@ function eliminarCarrito(idProd) {
 
 }
 
+
 function calcularPreProd(idProd) {
   let cantPro = parseInt(document.getElementById("cantPro_" + idProd).value)
 
   arregloCarrito.map(function (dato) {
     if (dato.idProducto == idProd) {
-      dato.precioTotalPro = parseFloat(dato.precioProducto * cantPro).toFixed(2)
+      //dato.precioTotalPro = parseFloat(dato.precioProducto * cantPro).toFixed(2)
       dato.cantProducto = cantPro
     }
     return dato
   })
-  dibujarTablaCarrito()
+  //dibujarTablaCarrito()
 }
 
 /*deshuso*/
@@ -119,18 +118,7 @@ function emitirNotaEntrega() {
   let chofer = parseInt(document.getElementById("chofer").value)
   let vehiculo = parseInt(document.getElementById("vehiculo").value)
   let zonaVenta = document.getElementById("zonaVenta").value
-
-  let selectConductor = document.getElementById("chofer").selectedIndex;
-  let selectVehiculo = document.getElementById("vehiculo").selectedIndex;
-  let selectZonaVenta=document.getElementById("zonaVenta").value
-
-  if (selectConductor == null || selectConductor == 0) {
-    document.getElementById("error-conductor").innerHTML = "Debe seleccionar un conductor"
-  }if (selectVehiculo == null || selectVehiculo == 0) {
-    document.getElementById("error-vehiculo").innerHTML = "Debe seleccionar un vehículo"
-  }if(selectZonaVenta == null || selectZonaVenta.length == 0){
-    document.getElementById("error-zona").innerHTML="El campo Zona de Venta no puede estar vacío"
-  } else {
+  
     let obj = {
       "chofer": chofer,
       "vehiculo": vehiculo,
@@ -144,7 +132,7 @@ function emitirNotaEntrega() {
       data: obj,
       cache: false,
       success: function (data) {
-        console.log(data)
+
         if (data == "ok") {
           Swal.fire({
             icon: 'success',
@@ -166,7 +154,8 @@ function emitirNotaEntrega() {
         }
       }
     })
-  }
+
+
 }
 
 function registroFactura(datos) {
@@ -413,7 +402,7 @@ function eliminarCarrito2(idProd) {
   dibujarTablaCarrito2()
 }
 /* arreglar funcion calcular precio total */
-function calcularPreProdVenta(idProd) {
+function calcularPreProdVenta() {
   let preUnit = parseInt(document.getElementById("preUnit_" + idProd).value)
 
   arregloCarrito2.map(function (dato) {

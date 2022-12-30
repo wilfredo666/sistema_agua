@@ -177,8 +177,8 @@ seccion de modals
 
   });
 
-    /*dataTable para productos en NOTA DE Venta*/
-    $(function () {
+  /*dataTable para productos en NOTA DE Venta*/
+  $(function () {
     $("#DataTableProductoNotaVenta").DataTable({
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
       "paging":true,
@@ -283,9 +283,66 @@ seccion de modals
   });
 
   /*select2 para formulario NE*/
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
+  $('.select2bs4').select2({
+    theme: 'bootstrap4'
+  })
+
+</script>
+
+
+<script>
+  //validacion para Nota de entrega
+  $(function () {
+    $.validator.setDefaults({
+      submitHandler: function () {
+        emitirNotaEntrega()
+      }
+    });
+    $("#FNotaEntrega").validate({
+      rules:{
+        zonaVenta:{
+          required:true,
+          minlength: 3
+        },
+        chofer:{
+          required:true
+        },
+        vehiculo:{
+          required:true
+        }
+      },
+      messages: {
+        zonaVenta: {
+          required: "El campo no puede estar vacio",
+          minlength: "El campo no puede tener menos de 3 caracteres"
+        },
+        chofer: {
+          required: "Seleccione un chofer"
+        },
+        vehiculo: {
+          required: "Seleccione un vehiculo"
+        }
+      },
+
+      //se crea el elemento span donde se escribira el mensaje
+      errorElement:"span",
+      errorPlacement: function(error, element){
+        error.addClass("invalid-feedback")
+        element.closest(".input-group").append(error) //cambiar a .imput-group ya que es el elemento padre del input
+      },
+      //destacar
+      highlight:function(element, errorClass, validClass){
+        $(element).addClass("is-invalid")
+      },
+
+      //desmarcar
+      unhighlight:function(element, errorClass, validClass){
+        $(element).removeClass("is-invalid")
+      }
+
     })
+  })
+
 
 </script>
 

@@ -8,7 +8,7 @@ $datosJson= '{
     "data":[';
 foreach($producto as $key => $value){
   
-  $botones="<div class='btn-group'><button class='btn btn-info btn-block btn-sm' onclick='agregarCarrito(".$value['id_producto'].")'><i class='fas fa-plus'></i></button></div>";
+  $botones="<div class='btn-group'><button type='button' class='btn btn-info btn-block btn-sm' onclick='agregarCarrito(".$value['id_producto'].")'><i class='fas fa-plus'></i></button></div>";
   $datosJson.='[
         "'.$value["cod_producto"].'",
         "'.$value["nombre_producto"].'",

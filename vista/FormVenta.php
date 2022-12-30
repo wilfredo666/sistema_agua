@@ -19,7 +19,7 @@
       <div class="card-body">
         <!-- <form class="row"> -->
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-5">
             <div class="form-group col-md-12">
               <table id="DataTableProductoNotaVenta" class="display compact">
                 <thead>
@@ -36,7 +36,7 @@
               </table>
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-7">
             <div class="form-group">
               <label for="">#Factura</label>
               <input type="number" class="form-control" name="numFactura" id="numFactura">
@@ -60,7 +60,7 @@
 
                   foreach ($cliente as $value) {
                   ?>
-                    <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
+                  <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
                   <?php }
                   ?>
                 </datalist>
@@ -73,6 +73,26 @@
               <label for="">Razon Social</label>
               <input type="text" class="form-control" name="rsCliente" id="rsCliente">
             </div>
+
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width=250px; >Descripción</th>
+                  <th>Cantidad</th>
+                  <th>P.Unitario</th>
+                  <th>Descuento</th>
+                  <th width=150px;>Total</th>
+                  <!-- <th>Precio</th>
+<th>P. Total</th> -->
+                  <td>&nbsp;</td>
+                </tr>
+              </thead>
+              <tbody id="listaDetalle2">
+              </tbody>
+
+            </table>
+
 
             <!-- <div class="card" style="background-colo:#f2f2f2">
 <div class="input-group sm-3">
@@ -99,25 +119,7 @@
 -->
           </div>
 
-          <div class="form-group col-md-7">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th width=250px; >Descripción</th>
-                  <th width=200px;>Cantidad</th>
-                  <th width=200px;>Precio Unit.</th>
-                  <th width=100px;>Descuento</th>
-                  <th width=200px;>Total</th>
-                  <!-- <th>Precio</th>
-                  <th>P. Total</th> -->
-                  <td>&nbsp;</td>
-                </tr>
-              </thead>
-              <tbody id="listaDetalle2">
-              </tbody>
 
-            </table>
-          </div>
 
           <!--  </form> -->
         </div>
