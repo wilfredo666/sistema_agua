@@ -5,6 +5,8 @@ require "../../modelo/personalModelo.php";
 $id = $_GET["id"];
 $personal = ControladorPersonal::ctrInfoPersonal($id);
 
+$nombresPersonal =  $personal["nombre_personal"] . "" . $personal["ap_pat_personal"];
+
 ?>
 <div class="modal-header">
     <h4 class="modal-title">Información del personal</h4>
@@ -15,7 +17,7 @@ $personal = ControladorPersonal::ctrInfoPersonal($id);
 <div class="modal-body">
     <div class="row">
         <div class="col-sm-6">
-            <table class="table"> 
+            <table class="table">
                 <tr>
                     <th>#ID</th>
                     <td><?php echo $personal["id_personal"]; ?></td>
@@ -72,6 +74,15 @@ $personal = ControladorPersonal::ctrInfoPersonal($id);
                 </tr>
 
             </table>
+            <div class="form-group text-center justify-content-center align-items-center">
+                <label for="">Adjuntar archivos</label>
+                <button class="btn  bg-gradient-success btn-sm mb-2" style="width: 80%;" onclick="MSubirArchivos('<?php echo $nombresPersonal ?>')">
+                    <i class="fas fa-upload"></i> Subir archivos
+                </button>
+                <a href="http://localhost/sistema_agua/vista/personal/MostrarArchivos.php?nombre=<?php echo $nombresPersonal ?>" class="btn bg-gradient-info btn-sm " target="_blank" style="width: 80%;">
+                    <i class="far fa-copy"> </i> Visualizar archivos
+                </a>
+            </div>
         </div>
         <div class="col-sm-6 text-center">
             <label for="">Ubicación</label> <br>

@@ -75,8 +75,9 @@
         </div>
       </div>
     </div>
+
     <!-- DESCOMENTAR PARA VER CAMPO ARCHIVOS CON DROPZONE -->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm-12">
         <label for="">Archivos Adjuntos</label>
         <div id="actions" class="row">
@@ -140,7 +141,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- FIN dropzone -->
 
     <div class="row">
@@ -217,7 +218,7 @@
 </script>
 
 <!-- Script para el dropzone -->
-<script>
+<!-- <script>
   // DropzoneJS Demo Code Start
   Dropzone.autoDiscover = false
 
@@ -272,4 +273,4 @@
     myDropzone.removeAllFiles(true)
   }
   // DropzoneJS Demo Code End
-</script>
+</script> -->

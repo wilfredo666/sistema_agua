@@ -169,3 +169,21 @@ function Comprobarpersonal(){
 
   })
 }
+
+/* SUBIR ARCHIVOS CON DROPZONE  */
+function MSubirArchivos(nombresPersonal){
+  $("#modal-lg").modal("hide")
+  $('#modal-lg2').modal('show');
+  var obj = "";
+  $.ajax({
+    type: "POST",
+    url: "vista/personal/MSubirArchivos.php?nombre="+nombresPersonal,
+    data: obj,
+    success: function (data) {
+      /* $("#formulario").html(data); */
+      /* console.log(data); */
+      $("#content-lg2").html(data)     
+    }
+  })
+}
+

@@ -85,6 +85,18 @@ seccion de modals
 </div>
 <!-- /.modal -->
 
+<div class="modal fade" id="modal-lg2">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="content-lg2">
+
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <div class="modal fade" id="modal-xl">
   <div class="modal-dialog modal-xl">
     <div class="modal-content" id="content-xl">
