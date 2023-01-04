@@ -75,10 +75,10 @@ $nombresPersonal =  $personal["nombre_personal"] . "" . $personal["ap_pat_person
 
             </table>
             <div class="form-group text-center justify-content-center align-items-center">
-                <label for="">Adjuntar archivos</label>
+                <!-- <label for="">Adjuntar archivos</label>
                 <button class="btn  bg-gradient-success btn-sm mb-2" style="width: 80%;" onclick="MSubirArchivos('<?php echo $nombresPersonal ?>')">
                     <i class="fas fa-upload"></i> Subir archivos
-                </button>
+                </button> -->
                 <a href="http://localhost/sistema_agua/vista/personal/MostrarArchivos.php?nombre=<?php echo $nombresPersonal ?>" class="btn bg-gradient-info btn-sm " target="_blank" style="width: 80%;">
                     <i class="far fa-copy"> </i> Visualizar archivos
                 </a>

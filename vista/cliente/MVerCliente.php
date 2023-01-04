@@ -5,6 +5,9 @@ require "../../modelo/clienteModelo.php";
 $id = $_GET["id"];
 $cliente = ControladorCliente::ctrInfoCliente($id);
 
+$razonSocial = $cliente["razon_social_cliente"]; 
+
+$rzCliente = preg_replace('([^A-Za-z0-9])', '', $razonSocial);
 ?>
 <div class="modal-header">
   <h4 class="modal-title">Información de cliente</h4>
@@ -70,6 +73,13 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
       <?php
       }
       ?>
+
+      <div class="form-group text-center justify-content-center align-items-center mt-3">
+        
+        <a href="http://localhost/sistema_agua/vista/cliente/MostrarArchivos.php?nombre=<?php echo $rzCliente ?>" class="btn bg-gradient-info btn-sm " target="_blank" style="width: 80%;">
+          <i class="far fa-copy"> </i> Visualizar archivos
+        </a>
+      </div>
     </div>
   </div>
 

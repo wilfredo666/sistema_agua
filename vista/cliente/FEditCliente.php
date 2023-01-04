@@ -5,6 +5,11 @@ require "../../modelo/clienteModelo.php";
 $id = $_GET["id"];
 $cliente = ControladorCliente::ctrInfoCliente($id);
 
+
+$razonSocial = $cliente["razon_social_cliente"]; 
+
+$rzCliente = preg_replace('([^A-Za-z0-9])', '', $razonSocial);
+
 ?>
 
 <div class="modal-header">
@@ -89,6 +94,14 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
         </div>
       </div>
     </div>
+    <div class="col-sm-5 mb-0">
+      <div class="form-group text-center justify-content-center align-items-center mb-0">
+        <label for="">Adjuntar archivos</label>
+        <button type="button" class="btn  bg-gradient-success btn-sm mb-2" style="width: 80%;" onclick="MSubirArchivosCli('<?php echo $rzCliente ?>')">
+          <i class="fas fa-upload"></i> Subir archivos
+        </button>
+      </div>
+    </div>
   </div>
   <div class="modal-footer justify-content-between">
     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -96,10 +109,6 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
     <button type="submit" class="btn btn-primary">Actualizar</button>
   </div>
 </form>
-
-
-
-
 
 <script>
   $(function() {
@@ -119,7 +128,7 @@ $cliente = ControladorCliente::ctrInfoCliente($id);
             required: true,
             minlength: 3
           },
-          nombreCliente:{
+          nombreCliente: {
             required: true,
             minlength: 3
           },
