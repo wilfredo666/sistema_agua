@@ -35424,6 +35424,19 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   justify-content: center;
 }
 
+.login-page #back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url(../img/login1.jpg);
+  opacity: 80%;
+  background-size: cover;
+  overflow: hidden;
+  z-index: -1;
+}
+
 .login-box,
 .register-box {
   width: 360px;
@@ -52416,3 +52429,20 @@ a.text-muted:hover {
   color: #3f474e;
 }
 /*# sourceMappingURL=adminlte.css.map */
+
+/* ADICIONALES */
+.encabezado {
+  /* background-color: #173972;  */
+ /*  background-image: linear-gradient(345deg, #79eaff 0, #4370a7 50%, #030811 100%); */
+/*  background-image: linear-gradient(325deg, #498da8 0, #4370a7 50%, #111823 100%); */
+background-image: linear-gradient(325deg, #2d4f5a 0, #1d5065 50%, #266d81 100%);
+color: aliceblue;
+}
+
+/* [class*=sidebar-dark-] {
+  background-image: radial-gradient(circle at 50% -4.5%, #2f4a76 0, #142137 50%, #000000 100%);
+} */
+
+[class*=sidebar-dark-] {
+  background-image: radial-gradient(circle at 50% -4.5%, #0b7d89 0, #112952f2 50%, #000000 100%);
+}

@@ -9,8 +9,8 @@ $razonSocial = $cliente["razon_social_cliente"];
 
 $rzCliente = preg_replace('([^A-Za-z0-9])', '', $razonSocial);
 ?>
-<div class="modal-header">
-  <h4 class="modal-title">Información de cliente</h4>
+<div class="modal-header encabezado">
+  <h4 class="modal-title font-weight-light">Información de cliente</h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

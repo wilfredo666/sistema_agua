@@ -17,7 +17,7 @@
           <th>Estado</th>
           <th>Ultimo Acceso</th>
           <td>
-            <button class="btn btn-primary" onclick="MNuevoUsuario()">Nuevo</button>
+            <button class="btn btn-primary"  onclick="MNuevoUsuario()"> <i class="fas fa-plus"></i> Nuevo</button>
           </td>
         </tr>
       </thead>

@@ -8,8 +8,8 @@ $personal = ControladorPersonal::ctrInfoPersonal($id);
 $nombresPersonal =  $personal["nombre_personal"] . "" . $personal["ap_pat_personal"];
 
 ?>
-<div class="modal-header">
-    <h4 class="modal-title">Información del personal</h4>
+<div class="modal-header encabezado">
+  <h4 class="modal-title font-weight-light">Información del Personal</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>

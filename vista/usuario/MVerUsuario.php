@@ -6,8 +6,8 @@ $id=$_GET["id"];
 $usuario=ControladorUsuario::ctrInfoUsuario($id);
 
 ?>
-<div class="modal-header">
-  <h4 class="modal-title">Información de usuario</h4>
+<div class="modal-header encabezado">
+  <h4 class="modal-title">Información del Usuario</h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

@@ -218,7 +218,7 @@ Opciones
 -->
             <li class="nav-item">
               <a href="salir" class="nav-link">
-                <i class="fas fa-door-open nav-icon"></i>
+                <i class="fas fa-power-off nav-icon"></i>
                 <p>
                   Salir
                 </p>
