@@ -35,7 +35,7 @@
           </div>
 
         </div>
-         
+       
           <div id="FNotaEntrega" class="col-md-6">
 
             <div class="input-group mb-3">
@@ -104,7 +104,7 @@
           </div>
 
         <div class="card-footer">
-          <button class="btn btn-success float-right" onclick="emitirNotaEntrega()">Guardar</button>
+          <button class="btn btn-success float-right">Guardar</button>
         </div>
     
     </form>

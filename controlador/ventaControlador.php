@@ -8,7 +8,8 @@ if(isset($ruta["query"])){
      $ruta["query"]=="ctrLeyenda"||
      $ruta["query"]=="ctrReporteVentas"||
      $ruta["query"]=="ctrAnularFactura"||
-     $ruta["query"]=="ctrRegNotaVenta"){
+     $ruta["query"]=="ctrRegNotaVenta"||
+     $ruta["query"]=="ctrRegNotaEntrega"){
     $metodo=$ruta["query"];
     $Producto=new ControladorVenta();
     $Producto->$metodo();
@@ -79,7 +80,7 @@ class ControladorVenta{
     $hora=date("H-i-s");
 
     $data=array(
-      "chofer"=>$_POST["chofer"],
+      "numFactura"=>$_POST["chofer"],
       "vehiculo"=>$_POST["vehiculo"],
       "usuario"=>$_SESSION["idUsuario"],
       "fechaHora"=>$fecha." ".$hora,
@@ -92,13 +93,35 @@ class ControladorVenta{
 
   }
 
+  static public function ctrRegNotaEntrega(){
+        session_start();
+    require_once "../modelo/ventaModelo.php";
+
+    date_default_timezone_set("America/La_Paz");
+    $fecha=date("Y-m-d");
+    $hora=date("H-i-s");
+
+    $data=array(
+      "chofer"=>$_POST["chofer"],
+      "vehiculo"=>$_POST["vehiculo"],
+      "usuario"=>$_SESSION["idUsuario"],
+      "fechaHora"=>$fecha." ".$hora,
+      "productos"=>$_POST["productos"],
+      "zonaVenta"=>$_POST["zonaVenta"]
+    );
+
+    $respuesta=ModeloVenta::mdlRegNotaEntrega($data);
+    echo $respuesta;
+
+  }
+  
   static public function ctrInfoNotasEntrega(){
     $respuesta=ModeloVenta::mdlInfoNotasEntrega();
     return $respuesta;
   }
 
   static public function ctrInfoNotaEntrega($id){
-    
+
     $respuesta=ModeloVenta::mdlInfoNotaVenta($id);
     return $respuesta;
   }

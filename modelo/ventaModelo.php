@@ -25,6 +25,27 @@ class ModeloVenta{
     $stmt->close();
     $stmt->null;
   }
+  
+  static public function mdlRegNotaEntrega($data){
+    $chofer=$data["chofer"];
+    $vehiculo=$data["vehiculo"];
+    $usuario=$data["usuario"];
+    $fechaHora=$data["fechaHora"];
+    $productos=$data["productos"];
+    $zonaVenta=$data["zonaVenta"];
+
+
+    $stmt=Conexion::conectar()->prepare("insert into nota_entrega(id_personal, id_vehiculo, id_usuario, fecha_hora_ne, detalle_ne, zona_venta) values($chofer, $vehiculo, $usuario, '$fechaHora', '$productos', '$zonaVenta')");
+
+    if($stmt->execute()){
+      return "ok";
+    }else{
+      return "n";
+    }
+
+    $stmt->close();
+    $stmt->null;
+  }
 
   static public function mdlInfoNotasEntrega(){
     $stmt=Conexion::conectar()->prepare("select id_nota_entrega, nombre_usuario, nombre_personal, ap_pat_personal, fecha_hora_ne, zona_venta from nota_entrega join personal on nota_entrega.id_personal=personal.id_personal join vehiculo on nota_entrega.id_vehiculo=vehiculo.id_vehiculo join usuario on nota_entrega.id_usuario=usuario.id_usuario");

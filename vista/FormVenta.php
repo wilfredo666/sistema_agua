@@ -81,47 +81,20 @@
                   <th width=250px; >Descripción</th>
                   <th>Cantidad</th>
                   <th>P.Unitario</th>
-                  <th>Descuento</th>
-                  <th width=150px;>Total</th>
-                  <!-- <th>Precio</th>
-<th>P. Total</th> -->
+                  <th width=100px;>Total</th>
                   <td>&nbsp;</td>
                 </tr>
               </thead>
               <tbody id="listaDetalle2">
               </tbody>
+              <tfooter>
+                <th colspan="3">Total</th>
+                <td id="totalVenta"></td>
+              </tfooter>
 
             </table>
 
-
-            <!-- <div class="card" style="background-colo:#f2f2f2">
-<div class="input-group sm-3">
-<div class="input-group-prepend">
-<span class="input-group-text">Subtotal</span>
-</div>
-<input type="text" class="form-control" name="subTotal" id="subTotal" value="0.00" readonly style="text-align:right;">
-</div>
-
-<div class="input-group sm-3">
-<div class="input-group-prepend">
-<span class="input-group-text">Descuento</span>
-</div>
-<input type="text" class="form-control" name="descAdicional" id="descAdicional" value="0.00" style="text-align:right;" onkeyup="calcularTotal()">
-</div>
-
-<div class="input-group sm-3">
-<div class="input-group-prepend">
-<span class="input-group-text">Total</span>
-</div>
-<input type="text" class="form-control" name="totApagar" id="totApagar" value="0.00" readonly style="text-align:right;">
-</div>
-</div>
--->
           </div>
-
-
-
-          <!--  </form> -->
         </div>
       </div>
       <div class="card-footer">
