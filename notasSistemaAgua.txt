@@ -2,29 +2,26 @@ pendientes
 -----------
 -hacer que la localizacion de google maps se muestre en un modal
 -encabezado en formulario venta, dataTable
--considerar poner el formulario de NE en dos columnas
--(ojo) en el apartado nota de entrega la lista de choferes debe ser la tabla usuarios o personal?
--hacer que se muestre la ubicacion de un cliente al precionar el boton
--El usuario no se puede eliminar si hay facturas o NE emitidas por el
-  *guardar en la nota de entrega el usuario que lo emite (reporte de ventas mayor)
--Los productos no se pueden eliminar si hay facturas o NE emitidas con el
-  *revisar la restriccion po db, que devuelve al estar relacionado? sin importar con cuantas tablas campturar el error y con ello evitar la eliminacion restringida; segun almacen_ropa->eliTienda, me devuelve un booleano(true o false)
--definir quien puede ver modulo personal
-dudas
--El personal no puede eliminarse si esta en alguna NE (no se eliminara, solo se marcara como no disponible a nivel de db)
--Terminar el crud de personal y vehiculo
 
--validaciones select para nota de entrega y venta
+-hacer que se muestre la ubicacion de un cliente al precionar el boton
+
+======================
+respuesta al eliminar
+======================
+  *revisar la restriccion pdo db, que devuelve al estar relacionado? sin importar con cuantas tablas campturar el error y con ello evitar la eliminacion restringida; segun almacen_ropa->eliTienda, me devuelve un booleano(true o false)
+
+
+
+
 -deshabilitar del boton de agregaddo cuando se añada al carrito ya que se usa el id para eliminar y para cambiar la cantidad
+
+-Crear otro apartado en nota de venta que sea ordenes de entrega y que solo se visualize las ordenes del chofer y en nota de venta agregar campo para seleccionar el encargado de venta
 
 ------------- 
 -Como son registrados los ingresos de los productos producidos?
   *Podria necesitarse una nota de ingreso
     -Cuando se agregue modulo de inventarios
 -------------
-  
-  
-  
   
   ==========
   reciclado

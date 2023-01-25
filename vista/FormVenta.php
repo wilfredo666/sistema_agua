@@ -3,9 +3,9 @@
   <section class="content">
 
     <!--encabezado-->
-    <div class="card">
+    <div class="card card-primary card-outline">
       <div class="card-header">
-        <h3>Formulario de Venta <span class="text-muted">- Encabezado</span></h3>
+         <h4 class="card-title" style="font-size:20px;">Nota de Venta</h4>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>

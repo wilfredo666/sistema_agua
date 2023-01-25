@@ -146,12 +146,20 @@ function MEliUsuario(id){
         success:function(data){
 
           if(data=="ok"){
-            location.reload()
+            Swal.fire({
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Usuario eliminado',
+              timer: 1000
+            })
+            setTimeout(function(){
+              location.reload()
+            },1200)
           }else{
             Swal.fire({
               icon:'error',
               title:'Error!!!',
-              text:'El usuario no puede ser eliminado, porque esta activo',
+              text:'El usuario no puede ser eliminado, porque esta en uso',
               showConfirmButton:false,
               timer:1500
             })

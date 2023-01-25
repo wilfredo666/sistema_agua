@@ -92,45 +92,49 @@ class ModeloUsuario{
   }
 
   static public function mdlEliUsuario($data){
-    $login_sql=ModeloUsuario::mdlInfoUsuario($data);
-    $login=$login_sql["login_usuario"];
+    $usuario_sql=ModeloUsuario::mdlInfoUsuario($data);
+    $id_usuario=$usuario_sql["id_usuario"];
 
-    $usuario=Conexion::conectar()->prepare("select * from factura where usuario='$login'");
-    $usuario->execute();
-    if($usuario->fetch()>0){
+    $factura=Conexion::conectar()->prepare("select * from factura where id_usuario=$id_usuario");
+    $factura->execute();
+    if($factura->fetch()>0){
       echo "error";
     }else{
-      $stmt=Conexion::conectar()->prepare("delete from usuario where id_usuario=$data");
-
-      if($stmt->execute()){
-        return "ok";
+      $nota_entrega=Conexion::conectar()->prepare("select * from nota_entrega where id_usuario=$id_usuario");
+      $nota_entrega->execute();
+      if($nota_entrega->fetch()>0){
+        echo "error";
       }else{
-        return "error";
+        $stmt=Conexion::conectar()->prepare("delete from usuario where id_usuario=$data");
+
+        if($stmt->execute()){
+          return "ok";
+        }
       }
     }
 
-    $stmt->close();
-    $stmt->null;
-  }
+  $stmt->close();
+  $stmt->null;
+}
 
-  static public function mdlBusUsuario($data){
-    $stmt=Conexion::conectar()->prepare("select * from usuario WHERE login_usuario like '$data' ");
-    $stmt->execute();
+static public function mdlBusUsuario($data){
+  $stmt=Conexion::conectar()->prepare("select * from usuario WHERE login_usuario like '$data' ");
+  $stmt->execute();
 
-    return $stmt->fetch();
+  return $stmt->fetch();
 
-    $stmt->close();
-    $stmt->null;
-  }
-  
-  static public function mdlCantidadUsuarios(){
-    $stmt=Conexion::conectar()->prepare("select count(*) as usuario from usuario");
-    $stmt->execute();
+  $stmt->close();
+  $stmt->null;
+}
 
-    return $stmt->fetch();
+static public function mdlCantidadUsuarios(){
+  $stmt=Conexion::conectar()->prepare("select count(*) as usuario from usuario");
+  $stmt->execute();
 
-    $stmt->close();
-    $stmt->null;
-  }
+  return $stmt->fetch();
+
+  $stmt->close();
+  $stmt->null;
+}
 
 }
