@@ -78,12 +78,12 @@ class ModeloVehiculo
 
   static public function mdlEliVehiculo($data)
   {
-    $Vehiculo = Conexion::conectar()->prepare("select * from factura where id_Vehiculo=$data");
-    $Vehiculo->execute();
-    if ($Vehiculo->fetch() > 0) {
+    $vehiculo = Conexion::conectar()->prepare("select * from nota_entrega where id_vehiculo=$data");
+    $vehiculo->execute();
+    if ($vehiculo->fetch() > 0) {
       echo "error";
     } else {
-      $stmt = Conexion::conectar()->prepare("delete from Vehiculo where id_Vehiculo=$data");
+      $stmt = Conexion::conectar()->prepare("delete from vehiculo where id_vehiculo=$data");
 
       if ($stmt->execute()) {
         return "ok";

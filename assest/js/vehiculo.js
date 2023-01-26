@@ -159,16 +159,24 @@ function MEliVehiculo(id){
         data:obj,
         url:"controlador/VehiculoControlador.php?ctrEliVehiculo",
         success:function(data){
-
-          if(data=="ok"){
-            location.reload()
-          }else{
+          /* console.log(data) */
+          if (data == "ok") {
             Swal.fire({
-              icon:'error',
-              title:'Error!!!',
-              text:'El Vehiculo no puede ser eliminado',
-              showConfirmButton:false,
-              time:1500
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Vehiíulo eliminado',
+              timer: 1000
+            })
+            setTimeout(function () {
+              location.reload()
+            }, 1200)
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!!!',
+              text: 'El Vehículo no puede ser eliminado, porque tiene registros',
+              showConfirmButton: false,
+              timer: 1500
             })
           }
         }

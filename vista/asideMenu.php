@@ -1,4 +1,3 @@
-
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
@@ -40,7 +39,7 @@
             <img src="assest/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block" id="usuarioLogin"><?php echo $_SESSION["NombreUsuario"];?></a>
+            <a href="#" class="d-block" id="usuarioLogin"><?php echo $_SESSION["NombreUsuario"]; ?></a>
           </div>
         </div>
 
@@ -49,153 +48,162 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
 with font-awesome or any other icon font library -->
-            <?php if($_SESSION["perfil"]=="Administrador"){
+            <?php if ($_SESSION["perfil"] == "Administrador") {
             ?>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Usuarios
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VUsuario" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lista de usuarios</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Usuarios
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VUsuario" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lista de usuarios</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             <?php
-}?>
-
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-handshake"></i>
-                <p>
-                  Clientes
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VCliente" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lista de clientes</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <?php if($_SESSION["perfil"]=="Administrador"){
+            }
             ?>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-boxes"></i>
-                <p>
-                  Productos
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="VProducto" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lista de productos</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <?php 
+            <?php if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Chofer") {
+            ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-handshake"></i>
+                  <p>
+                    Clientes
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VCliente" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lista de clientes</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php
+            }
+            ?>
+            <?php if ($_SESSION["perfil"] == "Administrador") {
+            ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-boxes"></i>
+                  <p>
+                    Productos
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VProducto" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lista de productos</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php
+            }
+            ?>
+            <?php if ($_SESSION["perfil"] == "Administrador") {
+            ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-cash-register"></i>
+                  <p>
+                    Ventas
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
 
-}?>
+                <ul class="nav nav-treeview">         
+                  <li class="nav-item">
+                    <a href="FormVenta" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Nota de Venta</p>
+                    </a>
+                  </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cash-register"></i>
-                <p>
-                  Ventas
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="FormVenta" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Nota de Venta</p>
-                  </a>
-                </li>
-                
-                <li class="nav-item">
-                  <a href="VFactura" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte de NV</p>
-                  </a>
-                </li>
-                
-                <li class="nav-item">
-                  <a href="FNotaEntrega" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Nota de Entrega</p>
-                  </a>
-                </li>
+                  <li class="nav-item">
+                    <a href="VFactura" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Reporte de NV</p>
+                    </a>
+                  </li>
+                <?php
+              }
+                ?>
+                <?php if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Chofer") {
+                ?>
+                  <li class="nav-item">
+                    <a href="FNotaEntrega" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Nota de Entrega</p>
+                    </a>
+                  </li>
+                <?php
+                }
+                ?>
+                <?php if ($_SESSION["perfil"] == "Administrador") {
+                ?>
+                  <li class="nav-item">
+                    <a href="VNotaEntrega" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Reporte NE</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
-                <li class="nav-item">
-                  <a href="VNotaEntrega" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Reporte NE</p>
-                  </a>
-                </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-people-carry"></i>
+                  <p>
+                    Personal
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VPersonal" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lista del Personal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
-
-
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-people-carry"></i>
-                <p>
-                  Personal
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-
-
-                <li class="nav-item">
-                  <a href="VPersonal" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lista del Personal</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-shuttle-van"></i>
-                <p>
-                  Vehiculos
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-shuttle-van"></i>
+                  <p>
+                    Vehiculos
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
 
 
-                <li class="nav-item">
-                  <a href="VVehiculo" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lista de Vehículos</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+                  <li class="nav-item">
+                    <a href="VVehiculo" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lista de Vehículos</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php
+                }
+            ?>
             <!--          <li class="nav-item">
 <a href="#" class="nav-link">
 <i class="nav-icon fas fa-cog"></i>
@@ -216,6 +224,7 @@ Opciones
 </ul>
 </li>
 -->
+
             <li class="nav-item">
               <a href="salir" class="nav-link">
                 <i class="fas fa-power-off nav-icon"></i>

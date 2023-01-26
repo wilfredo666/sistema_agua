@@ -85,12 +85,13 @@ class ModeloPersonal{
   }
 
   static public function mdlEliPersonal($data){
-    $Personal=Conexion::conectar()->prepare("select * from factura where id_Personal=$data");
-    $Personal->execute();
-    if($Personal->fetch()>0){
+    
+    $personal=Conexion::conectar()->prepare("select * from nota_entrega where id_personal=$data");
+    $personal->execute();
+    if($personal->fetch()>0){
       echo "error";
     }else{
-      $stmt=Conexion::conectar()->prepare("delete from Personal where id_Personal=$data");
+      $stmt=Conexion::conectar()->prepare("delete from personal where id_personal=$data");
 
       if($stmt->execute()){
         return "ok";

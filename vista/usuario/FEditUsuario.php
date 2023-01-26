@@ -37,7 +37,8 @@ $usuario = ControladorUsuario::ctrInfoUsuario($id);
     <div class="form-group">
       <label for="">Perfil de usuario</label>
       <select name="perfilUsuario" id="perfilUsuario" class="form-control">
-        <option value="Cajero" <?php if ($usuario["perfil"] == "Cajero") : ?>selected<?php endif; ?>>Cajero</option>
+        <option value="Secretaria" <?php if ($usuario["perfil"] == "Secretaria") : ?>selected<?php endif; ?>>Secretaria</option>
+        <option value="Chofer" <?php if ($usuario["perfil"] == "Chofer") : ?>selected<?php endif; ?>>Chofer</option>
         <option value="Administrador" <?php if ($usuario["perfil"] == "Administrador") : ?>selected<?php endif; ?>>Administrador</option>
       </select>
     </div>
