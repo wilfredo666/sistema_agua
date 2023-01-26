@@ -23,6 +23,15 @@ class ModeloPersonal{
     $stmt->null;
   }
 
+  static public function mdlInfoPersonalDisp(){
+    $stmt=Conexion::conectar()->prepare("select * from personal where cargo_personal='Chofer' and estado_personal=1 or cargo_personal='Secretaria' and estado_personal=1");
+    $stmt->execute();
+    return $stmt->fetchAll();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
   static public function mdlRegPersonal($data){
 
     $nomPersonal=$data["nomPersonal"];

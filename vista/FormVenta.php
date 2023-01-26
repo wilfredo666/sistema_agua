@@ -38,48 +38,76 @@
           </div>
           <div class="col-md-7">
             <div class="col-md-12">
-              <div class="form-group">
-                <label for="">#Factura</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">#Factura</span>
+                </div>
                 <input type="number" class="form-control" name="numFactura" id="numFactura">
                 <p class="text-danger" id="error-numFactura"></p>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">NIT/CI</label>
-                  <div class="input-group">
-                    <input list="listCliente" type="text" class="form-control" name="nitCliente" id="nitCliente" placeholder="Ingrese el Carnet o el Nit del cliente">
-                    <input type="hidden" id="idCliente" name="idCliente">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button" onclick="busCliente()">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
 
-                    <datalist id="listCliente">
-                      <?php
-                      $cliente = ControladorCliente::ctrInfoClientes();
-
-                      foreach ($cliente as $value) {
-                      ?>
-                        <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
-                      <?php }
-                      ?>
-                    </datalist>
-
-                  </div>
-
+            <!--  <div class="row">
+              <div class="col-md-6"> -->
+            <div class="col-md-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> NIT/CI </span>
                 </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Razon Social</label>
-                  <input type="text" class="form-control" name="rsCliente" id="rsCliente">
+                <!-- <div class="input-group"> -->
+                <input list="listCliente" type="text" class="form-control" name="nitCliente" id="nitCliente" placeholder="Ingrese el Carnet o el Nit del cliente">
+                <input type="hidden" id="idCliente" name="idCliente">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" onclick="busCliente()">
+                    <i class="fas fa-search"></i>
+                  </button>
                 </div>
+
+                <datalist id="listCliente">
+                  <?php
+                  $cliente = ControladorCliente::ctrInfoClientes();
+
+                  foreach ($cliente as $value) {
+                  ?>
+                    <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
+                  <?php }
+                  ?>
+                </datalist>
+                <!-- </div> -->
               </div>
             </div>
+            <!--  </div> -->
+
+            <div class="col-md-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Razon Social</span>
+                </div>
+                <input type="text" class="form-control" name="rsCliente" id="rsCliente">
+              </div>
+            </div>
+
+            <!-- PERSONAL -->
+            <div class="col-md-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Personal</span>
+                </div>
+                <select class="form-control select2bs4" name="personal" id="personal">
+                  <option value="">Seleccionar personal</option>
+                  <?php
+                  $personal = ControladorPersonal::ctrInfoPersonalDisp();
+                  foreach ($personal as $value) {
+                  ?>
+                    <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>
+                  <?php
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <!-- / PERSONAL -->
+            <!-- </div> -->
             <table class="table">
               <thead>
                 <tr>

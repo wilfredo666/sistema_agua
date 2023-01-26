@@ -368,15 +368,16 @@ function calcularTotal() {
 
 function emitirFactura(){
   
-
   let numFactura = document.getElementById("numFactura").value
   let nitCliente = document.getElementById("nitCliente").value
   let rsCliente = document.getElementById("rsCliente").value
+  let personal = document.getElementById("personal").value
 
   let obj = {
     "numFactura": numFactura,
     "nitCliente": nitCliente,
     "rsCliente": rsCliente,
+    "personal": personal,
     "productos": JSON.stringify(arregloCarrito2)
   }
 
