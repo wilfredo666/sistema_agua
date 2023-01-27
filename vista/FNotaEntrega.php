@@ -36,7 +36,7 @@
 
         </div>
        
-          <div id="FNotaEntrega" class="col-md-6">
+          <div class="col-md-6">
 
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -55,7 +55,7 @@
               </select>
 
             </div>
-            <!--<span class="text-danger chartjs-render-monitor" id="error-conductor"></span>-->
+
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">Vehiculo</span>
@@ -73,18 +73,15 @@
               </select>
 
             </div>
-            <!--  <span class="text-danger chartjs-render-monitor" id="error-vehiculo"></span>-->
+
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">Zona de venta</span>
               </div>
               <input type="text" class="form-control" name="zonaVenta" id="zonaVenta" placeholder="Ingresar la zona de venta">
-
             </div>
-            <!--<p class="text-danger chartjs-render-monitor" id="error-zona"></p>-->
 
 
-            <div class="form-group">
               <table class="table">
                 <thead>
                   <tr>
@@ -98,7 +95,6 @@
                 </tbody>
 
               </table>
-            </div>
           </div>
 
           </div>

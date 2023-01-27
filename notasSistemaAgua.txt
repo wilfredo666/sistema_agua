@@ -10,13 +10,17 @@ respuesta al eliminar
 ======================
   *revisar la restriccion pdo db, que devuelve al estar relacionado? sin importar con cuantas tablas campturar el error y con ello evitar la eliminacion restringida; segun almacen_ropa->eliTienda, me devuelve un booleano(true o false)
 
+es posible saber a cuanto vende un chofer el botellon de agua en la venta informal?
 
+-no, porque este podria alegar vender a un precio x, y sin embargo lo vendio en un precio z
+ejem: vendio a 10 y el declara haber vendido a 12. Dando como ganancia 2bs
 
 
 -deshabilitar del boton de agregaddo cuando se añada al carrito ya que se usa el id para eliminar y para cambiar la cantidad
 
 -Crear otro apartado en nota de venta que sea ordenes de entrega y que solo se visualize las ordenes del chofer y en nota de venta agregar campo para seleccionar el encargado de venta
 
+-quitar el precio de entrega en clientes, ya que no se sabe el precio de todos los productos, se podria crear un tabla llamada precio - cliente
 ------------- 
 -Como son registrados los ingresos de los productos producidos?
   *Podria necesitarse una nota de ingreso

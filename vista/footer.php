@@ -358,5 +358,66 @@ seccion de modals
 
 </script>
 
+<script>
+  //validacion para Nota de venta
+  $(function () {
+    $.validator.setDefaults({
+      submitHandler: function () {
+        emitirFactura()
+      }
+    });
+    $("#FNotaVenta").validate({
+      rules:{
+        numFactura:{
+          required:true,
+          minlength: 3
+        },
+        nitCliente:{
+          required:true
+        },
+        rsCliente:{
+          required:true
+        },
+        personal:{
+          required:true
+        }
+      },
+      messages: {
+        numFactura: {
+          required: "El campo no puede estar vacio",
+          minlength: "El campo no puede tener menos de 3 caracteres"
+        },
+        nitCliente: {
+          required: "Inserte o seleccione un nit/ci"
+        },
+        rsCliente: {
+          required: "El campo no puede estar vacio"
+        },
+        personal: {
+          required: "Seleccione personal"
+        }
+      },
+
+      //se crea el elemento span donde se escribira el mensaje
+      errorElement:"span",
+      errorPlacement: function(error, element){
+        error.addClass("invalid-feedback")
+        element.closest(".input-group").append(error) //cambiar a .imput-group ya que es el elemento padre del input
+      },
+      //destacar
+      highlight:function(element, errorClass, validClass){
+        $(element).addClass("is-invalid")
+      },
+
+      //desmarcar
+      unhighlight:function(element, errorClass, validClass){
+        $(element).removeClass("is-invalid")
+      }
+
+    })
+  })
+
+
+</script>
 </body>
 </html>

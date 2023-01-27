@@ -72,7 +72,7 @@ class ControladorVenta{
   }
 
   static public function ctrRegNotaVenta(){
-    session_start();
+    session_start();//inicamos la sesion para obtener el id del usuario actual
     require_once "../modelo/ventaModelo.php";
 
     date_default_timezone_set("America/La_Paz");
@@ -80,12 +80,15 @@ class ControladorVenta{
     $hora=date("H-i-s");
 
     $data=array(
-      "numFactura"=>$_POST["chofer"],
-      "vehiculo"=>$_POST["vehiculo"],
+      "numFactura"=>$_POST["numFactura"],
+      "idCliente"=>$_POST["idCliente"],
       "usuario"=>$_SESSION["idUsuario"],
       "fechaHora"=>$fecha." ".$hora,
       "productos"=>$_POST["productos"],
-      "zonaVenta"=>$_POST["zonaVenta"]
+      "personal"=>$_POST["personal"],
+      "totalVenta"=>$_POST["totalVenta"],
+      "descuentoVenta"=>$_POST["descuentoVenta"],
+      "netoVenta"=>$_POST["netoVenta"]
     );
 
     $respuesta=ModeloVenta::mdlRegNotaVenta($data);

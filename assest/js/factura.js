@@ -326,6 +326,7 @@ function eliminarCarrito2(idProd) {
     }
   })
   dibujarTablaCarrito2()
+  calcularTotal()
 }
 /* arreglar funcion calcular precio total */
 function calcularPreProdVenta(idProd) {
@@ -351,33 +352,45 @@ function descPreProducto() {
   let descProducto = parseFloat(document.getElementById("descProducto").value)
   let preUnitActual = parseFloat(document.getElementById("preUnitActual").value)
 
+
   document.getElementById("preUnitario").value = parseFloat(preUnitActual - descProducto)
 
   calcularPreProd()
 }
 
+function prueba(){
+  let descuento = parseFloat(document.getElementById("descuentoVenta").value)
+  console.log("helo")
+}
 function calcularTotal() {
   let totalCarrito = 0
+  let descuento = parseFloat(document.getElementById("descuentoVenta").value)
 
   for (var i = 0; i < arregloCarrito2.length; i++) {
     totalCarrito = totalCarrito + parseFloat(arregloCarrito2[i].preTotal)
   }
 
-   document.getElementById("totalVenta").innerHTML=(totalCarrito).toFixed(2) 
+  document.getElementById("totalVenta").value=(totalCarrito).toFixed(2)
+  document.getElementById("netoVenta").value=(totalCarrito-descuento).toFixed(2) 
 }
 
 function emitirFactura(){
-  
+
   let numFactura = document.getElementById("numFactura").value
-  let nitCliente = document.getElementById("nitCliente").value
+  let idCliente = document.getElementById("idCliente").value
   let rsCliente = document.getElementById("rsCliente").value
   let personal = document.getElementById("personal").value
+  let totalVenta = document.getElementById("totalVenta").value
+  let descuentoVenta = document.getElementById("descuentoVenta").value
+  let netoVenta = document.getElementById("netoVenta").value
 
   let obj = {
     "numFactura": numFactura,
-    "nitCliente": nitCliente,
-    "rsCliente": rsCliente,
+    "idCliente": idCliente,
     "personal": personal,
+    "totalVenta": totalVenta,
+    "descuentoVenta": descuentoVenta,
+    "netoVenta": netoVenta,
     "productos": JSON.stringify(arregloCarrito2)
   }
 
@@ -387,7 +400,7 @@ function emitirFactura(){
     data: obj,
     cache: false,
     success: function (data) {
-
+   
       if (data == "ok") {
         Swal.fire({
           icon: 'success',

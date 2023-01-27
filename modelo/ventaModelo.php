@@ -6,15 +6,18 @@ class ModeloVenta{
 
   static public function mdlRegNotaVenta($data){
 
-    $chofer=$data["chofer"];
-    $vehiculo=$data["vehiculo"];
+    $numFactura=$data["numFactura"];
+    $idCliente=$data["idCliente"];
     $usuario=$data["usuario"];
     $fechaHora=$data["fechaHora"];
     $productos=$data["productos"];
-    $zonaVenta=$data["zonaVenta"];
+    $personal=$data["personal"];
+    $total=$data["totalVenta"];
+    $descuento=$data["descuentoVenta"];
+    $neto=$data["netoVenta"];
 
 
-    $stmt=Conexion::conectar()->prepare("insert into nota_entrega(id_personal, id_vehiculo, id_usuario, fecha_hora_ne, detalle_ne, zona_venta) values($chofer, $vehiculo, $usuario, '$fechaHora', '$productos', '$zonaVenta')");
+    $stmt=Conexion::conectar()->prepare("insert into factura(codigo_factura, id_cliente, detalle_factura, total, descuento, neto, fecha_emision, id_usuario, id_personal) values('$numFactura', $idCliente, '$productos', '$total', '$descuento', '$neto', '$fechaHora', $usuario, $personal)");
 
     if($stmt->execute()){
       return "ok";
