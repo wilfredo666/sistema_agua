@@ -132,14 +132,21 @@ function MEliCliente(id) {
         data: obj,
         url: "controlador/ClienteControlador.php?ctrEliCliente",
         success: function (data) {
-
           if (data == "ok") {
-            location.reload()
+            Swal.fire({
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Cliente eliminado',
+              timer: 1000
+            })
+            setTimeout(function () {
+              location.reload()
+            }, 1200)
           } else {
             Swal.fire({
               icon: 'error',
               title: 'Error!!!',
-              text: 'El cliente no puede ser eliminado',
+              text: 'El Cliente no puede ser eliminado, porque tiene registros',
               showConfirmButton: false,
               timer: 1500
             })
