@@ -166,6 +166,24 @@ with font-awesome or any other icon font library -->
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-receipt"></i>
+                  <p>
+                    Reportes
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="VReporte" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Ventas chofer</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-people-carry"></i>
                   <p>
                     Personal

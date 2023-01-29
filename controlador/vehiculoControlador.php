@@ -59,7 +59,7 @@ class ControladorVehiculo{
     $imgVehiculoActual = $_POST["imgActVehiculo"];
     $imgVehiculo = $_FILES["ImgVehiculo"];
 
-    if($imgVehiculo == ""){
+    if($imgVehiculo["name"] == ""){
       $imagen = $imgVehiculoActual;
     }else{
       $imagen = $imgVehiculo["name"];

@@ -29,13 +29,13 @@
         foreach($factura as $value){
           ?>
           <tr>
-            <td><?php echo $value["cod_factura"];?></td>
+            <td><?php echo $value["codigo_factura"];?></td>
             <td><?php echo $value["razon_social_cliente"];?></td>
             <td><?php echo $value["fecha_emision"];?></td>
-            <td><?php echo $value["usuario"];?></td>
+            <td><?php echo $value["id_usuario"];?></td>
             <td><?php echo $value["total"];?></td>
             <td><?php
-          if($value["estado_factura"]==1){
+          if($value["estado_factura"]==0){
             ?>
              <span class="badge badge-success">Emitido</span>
               <?php
