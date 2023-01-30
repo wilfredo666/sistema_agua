@@ -59,11 +59,11 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="col-sm-6">
           <div class="form-group">
             <label for="">Ubicación</label>
+        
+            <input type="text" class="form-control" name="ubicacion" id="ubicacion">
           </div>
-        </div>
       </div>
     </div>
 

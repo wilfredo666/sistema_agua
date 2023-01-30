@@ -71,7 +71,11 @@ class ModeloVenta{
   }
 
   static public function mdlInfoVentas(){
-    $stmt=Conexion::conectar()->prepare("select * from factura join cliente on cliente.id_cliente=factura.id_cliente");
+    $stmt=Conexion::conectar()->prepare("select * from factura
+join cliente
+on cliente.id_cliente=factura.id_cliente
+JOIN usuario
+on usuario.id_usuario=factura.id_usuario");
 
     $stmt->execute();
     return $stmt->fetchAll();

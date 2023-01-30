@@ -205,4 +205,18 @@ function MSubirArchivosCli(rzCliente) {
   /* console.log(rzCliente) */
 }
 
+function MVerUbicacionCliente(id){
+    $("#modal-default").modal("show")
+
+  var obj=""
+  $.ajax({
+    type:"POST",
+    url:"vista/cliente/MostrarUbicacion.php",
+    data:obj,
+    success:function(data){
+      $("#content-default").html(data)
+    }
+  })
+}
+
 

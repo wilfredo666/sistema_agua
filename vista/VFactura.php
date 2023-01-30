@@ -32,13 +32,21 @@
             <td><?php echo $value["codigo_factura"];?></td>
             <td><?php echo $value["razon_social_cliente"];?></td>
             <td><?php echo $value["fecha_emision"];?></td>
+<<<<<<< Updated upstream
             <td><?php echo $value["id_usuario"];?></td>
+=======
+            <td><?php echo $value["login_usuario"];?></td>
+>>>>>>> Stashed changes
             <td><?php echo $value["total"];?></td>
             <td><?php
           if($value["estado_factura"]==0){
             ?>
              <span class="badge badge-success">Emitido</span>
               <?php
+          }else if($value["estado_factura"]==2){
+            ?>
+            <span class="badge badge-warning">Pendiente</span>
+            <?php
           }else{
             ?>
             <span class="badge badge-danger">Anulado</span>
@@ -50,7 +58,7 @@
                 <button class="btn btn-info" onclick="MVerFactura(<?php echo $value["id_factura"];?>)">
                   <i class="fas fa-eye"></i>
                 </button>
-                <button class="btn btn-danger" onclick="MEliFactura('<?php echo $value["cuf"];?>')">
+                <button class="btn btn-danger" onclick="MEliFactura('<?php echo $value["id_factura"];?>')">
                   <i class="fas fa-trash"></i>
                 </button>
                 <a href="vista/factura/ImpFactura.php?id=<?php echo $value["id_factura"];?>" class="btn btn-success" target="_blank">
