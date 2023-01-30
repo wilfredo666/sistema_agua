@@ -6,7 +6,8 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegPersonal" ||
     $ruta["query"] == "ctrEditPersonal" ||
     $ruta["query"] == "ctrEliPersonal" ||
-    $ruta["query"] == "ctrBusPersonal"
+    $ruta["query"] == "ctrBusPersonal" ||
+    $ruta["query"] == "ctrBuscarPersonal" 
   ) {
     $metodo = $ruta["query"];
     $Personal = new ControladorPersonal();
@@ -29,6 +30,11 @@ class ControladorPersonal
   {
     $respuesta = ModeloPersonal::mdlInfoChoferes();
 
+    return $respuesta;
+  }
+
+  static public function ctrInfoVentasPersonal(){
+    $respuesta = ModeloPersonal::mdlInfoVentasPersonal();
     return $respuesta;
   }
 
@@ -113,5 +119,21 @@ class ControladorPersonal
   static public function ctrInfoPersonalDisp(){
     $respuesta = ModeloPersonal::mdlInfoPersonalDisp();
     return $respuesta;
+  }
+
+  static public function ctrBuscarPersonal(){
+    require "../modelo/personalModelo.php";
+    require "../modelo/ventaModelo.php";
+
+    $idPersonal = $_POST["idPersonal"];
+    $fecha = $_POST["fecha"];
+
+    $data = array(
+      "idPersonal" => $idPersonal,
+      "fecha" => $fecha,
+    );
+
+    $respuesta = ModeloPersonal::mdlBuscarPersonal($data);
+    echo json_encode($respuesta);
   }
 }

@@ -23,6 +23,15 @@ class ModeloPersonal{
     $stmt->null;
   }
 
+  static public function mdlInfoVentasPersonal(){
+    $stmt=Conexion::conectar()->prepare("select * from personal where cargo_personal='Chofer' or cargo_personal='Secretaria' ");
+    $stmt->execute();
+    return $stmt->fetchAll();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
   static public function mdlInfoPersonalDisp(){
     $stmt=Conexion::conectar()->prepare("select * from personal where cargo_personal='Chofer' and estado_personal=1 or cargo_personal='Secretaria' and estado_personal=1");
     $stmt->execute();
@@ -119,6 +128,18 @@ class ModeloPersonal{
 
     return $stmt->fetch();
 
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlBuscarPersonal($data){
+    $idPersonal=$data["idPersonal"];
+    $fecha=$data["fecha"];
+
+    $stmt=Conexion::conectar()->prepare("select * from factura where id_personal=$idPersonal");
+    $stmt->execute();
+    return $stmt->fetchAll();
+    /*AÑADIR EN LA COSULTA => and fecha_emision=$fecha */
     $stmt->close();
     $stmt->null;
   }

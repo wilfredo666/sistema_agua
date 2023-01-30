@@ -195,3 +195,22 @@ function MSubirArchivos(nombresPersonal) {
   })
 }
 
+/* REPORTE PERSONAL */
+function reportePersonal(){
+  var formData = new FormData($("#ReporteDePersonal")[0])
+
+  $.ajax({
+    type: "POST",
+    url: "controlador/personalControlador.php?ctrBuscarPersonal",
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+      /* $("#repServConductor").html(data) */
+      console.log(data)
+    }
+  })
+
+  
+}
