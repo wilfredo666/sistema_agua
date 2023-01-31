@@ -176,7 +176,7 @@ with font-awesome or any other icon font library -->
                   <li class="nav-item">
                     <a href="VReporte" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Ventas chofer</p>
+                      <p>Ventas - personal</p>
                     </a>
                   </li>
                 </ul>

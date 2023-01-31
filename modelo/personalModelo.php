@@ -131,18 +131,6 @@ class ModeloPersonal{
     $stmt->close();
     $stmt->null;
   }
-
-  static public function mdlBuscarPersonal($data){
-    $idPersonal=$data["idPersonal"];
-    $fecha=$data["fecha"];
-
-    $stmt=Conexion::conectar()->prepare("select * from factura where id_personal=$idPersonal");
-    $stmt->execute();
-    return $stmt->fetchAll();
-    /*AÑADIR EN LA COSULTA => and fecha_emision=$fecha */
-    $stmt->close();
-    $stmt->null;
-  }
   
   static public function mdlCantidadPersonals(){
     $stmt=Conexion::conectar()->prepare("select count(*) as Personal from Personal");

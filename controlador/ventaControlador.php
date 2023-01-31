@@ -2,14 +2,13 @@
 $ruta=parse_url($_SERVER['REQUEST_URI']);
 
 if(isset($ruta["query"])){
-  if($ruta["query"]=="ctrNuevoCufd"||
-     $ruta["query"]=="ctrUltimoCufd"||
-     $ruta["query"]=="ctrRegistroFactura"||
+  if($ruta["query"]=="ctrRegistroFactura"||
      $ruta["query"]=="ctrLeyenda"||
      $ruta["query"]=="ctrReporteVentas"||
      $ruta["query"]=="ctrAnularFactura"||
      $ruta["query"]=="ctrRegNotaVenta"||
-     $ruta["query"]=="ctrRegNotaEntrega"){
+     $ruta["query"]=="ctrRegNotaEntrega"||
+     $ruta["query"]=="ctrVentaPersonal"){
     $metodo=$ruta["query"];
     $Producto=new ControladorVenta();
     $Producto->$metodo();
@@ -47,11 +46,11 @@ class ControladorVenta{
     return $respuesta;
   }
 
-  static public function ctrInfoFactura($id){
+  /*static public function ctrInfoFactura($id){
 
     $respuesta=ModeloVenta::mdlInfoFactura($id);
     return $respuesta;
-  }
+  }*/
 
   static public function ctrReporteVentas(){
     require_once "../modelo/ventaModelo.php";
@@ -97,7 +96,7 @@ class ControladorVenta{
   }
 
   static public function ctrRegNotaEntrega(){
-        session_start();
+    session_start();
     require_once "../modelo/ventaModelo.php";
 
     date_default_timezone_set("America/La_Paz");
@@ -117,7 +116,7 @@ class ControladorVenta{
     echo $respuesta;
 
   }
-  
+
   static public function ctrInfoNotasEntrega(){
     $respuesta=ModeloVenta::mdlInfoNotasEntrega();
     return $respuesta;
@@ -125,7 +124,38 @@ class ControladorVenta{
 
   static public function ctrInfoNotaEntrega($id){
 
+    $respuesta=ModeloVenta::mdlInfoNotaEntrega($id);
+    return $respuesta;
+  }
+
+  static public function ctrInfoNotaVenta($id){
     $respuesta=ModeloVenta::mdlInfoNotaVenta($id);
     return $respuesta;
   }
+
+  static public function ctrVentaPersonal(){
+    require "../modelo/ventaModelo.php";
+
+    $idPersonal = $_POST["idPersonal"];
+    $fecha = $_POST["fecha"];
+
+    $data = array(
+      "idPersonal" => $idPersonal,
+      "fecha" => $fecha,
+    );
+
+    $respuesta = ModeloVenta::mdlVentaPersonal($data);
+    foreach($respuesta as $value){
+?>
+<tr>
+  <td><?php echo $value["codigo_factura"]; ?></td>
+  <td><?php echo $value["nombre_cliente"]; ?></td>
+  <td><?php echo $value["fecha_emision"]; ?></td>
+  <td><?php echo $value["neto"]; ?></td>
+</tr>
+<?php
+                                 }
+  }
+
+
 }

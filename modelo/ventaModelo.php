@@ -28,7 +28,7 @@ class ModeloVenta{
     $stmt->close();
     $stmt->null;
   }
-  
+
   static public function mdlRegNotaEntrega($data){
     $chofer=$data["chofer"];
     $vehiculo=$data["vehiculo"];
@@ -60,7 +60,7 @@ class ModeloVenta{
     $stmt->null;
   }
 
-  static public function mdlInfoNotaVenta($id){
+  static public function mdlInfoNotaEntrega($id){
     $stmt=Conexion::conectar()->prepare("select * from nota_entrega join personal on nota_entrega.id_personal=personal.id_personal join vehiculo on nota_entrega.id_vehiculo=vehiculo.id_vehiculo join usuario on nota_entrega.id_usuario=usuario.id_usuario where id_nota_entrega=$id");
 
     $stmt->execute();
@@ -84,7 +84,7 @@ on usuario.id_usuario=factura.id_usuario");
     $stmt->null;
   }
 
-  static public function mdlInfoFactura($id){
+  /*  static public function mdlInfoFactura($id){
     $stmt=Conexion::conectar()->prepare("select * from factura join cliente on cliente.id_cliente=factura.id_cliente where id_factura=$id");
 
     $stmt->execute();
@@ -92,10 +92,10 @@ on usuario.id_usuario=factura.id_usuario");
 
     $stmt->close();
     $stmt->null;
-  }
+  }*/
 
   static public function mdlReporteVentas($fechaInicio, $fechaFinal){
-    $stmt=Conexion::conectar()->prepare("SELECT * FROM `factura` WHERE `fecha_emision` BETWEEN '$fechaInicio' AND '$fechaFinal 23:59:59'");
+    $stmt=Conexion::conectar()->prepare("SELECT * FROM factura WHERE fecha_emision BETWEEN '$fechaInicio' AND '$fechaFinal 23:59:59'");
 
     $stmt->execute();
     return $stmt->fetchAll();
@@ -113,6 +113,34 @@ on usuario.id_usuario=factura.id_usuario");
       return "n";
     }
 
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlInfoNotaVenta($id){
+    $stmt=Conexion::conectar()->prepare("select * from factura
+join cliente
+on cliente.id_cliente=factura.id_cliente
+JOIN usuario
+on usuario.id_usuario=factura.id_usuario where id_factura=$id");
+
+    $stmt->execute();
+    return $stmt->fetch();
+
+    $stmt->close();
+    $stmt->null;
+  }
+
+  static public function mdlVentaPersonal($data){
+    $idPersonal=$data["idPersonal"];
+    $fecha=$data["fecha"];
+
+    $stmt=Conexion::conectar()->prepare("select * from factura
+    JOIN cliente
+ON cliente.id_cliente=factura.id_cliente
+where id_personal=$idPersonal and fecha_emision BETWEEN '$fecha' AND '$fecha 23:59:59'");
+    $stmt->execute();
+    return $stmt->fetchAll();
     $stmt->close();
     $stmt->null;
   }

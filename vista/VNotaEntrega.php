@@ -40,12 +40,10 @@
                 <button class="btn btn-danger" onclick="MEliNotaEntrega('<?php echo $value["id_nota_entrega"];?>')">
                   <i class="fas fa-trash"></i>
                 </button>
-                <a href="vista/factura/ImpNotaVenta.php?id=<?php echo $value["id_nota_entrega"];?>" class="btn btn-success" target="_blank">
+                <a href="vista/factura/ImpNotaEntrega.php?id=<?php echo $value["id_nota_entrega"];?>" class="btn btn-success" target="_blank">
                   <i class="fas fa-print"></i>
                 </a>
-                <a href="vista/factura/ImpresionNotaVenta.php?id=<?php echo $value["id_nota_entrega"];?>" class="btn btn-dark" target="_blank">
-                  <i class="fas fa-print"></i>
-                </a>
+                
               </div>
             </td>
           </tr>

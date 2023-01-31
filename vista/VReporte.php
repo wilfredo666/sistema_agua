@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header pb-0">
     <div class="container-fluid">
-      <h4>Reporte por Conductor</h4>
+      <h4>Reporte de ventas por personal</h4>
     </div><!-- /.container-fluid -->
   </section>
 
@@ -59,7 +59,6 @@
         </tr>
       </thead>
       <tbody id="repVentasPersonal">
-        
       </tbody>
     </table>
 

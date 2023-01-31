@@ -6,9 +6,7 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegPersonal" ||
     $ruta["query"] == "ctrEditPersonal" ||
     $ruta["query"] == "ctrEliPersonal" ||
-    $ruta["query"] == "ctrBusPersonal" ||
-    $ruta["query"] == "ctrBuscarPersonal" 
-  ) {
+    $ruta["query"] == "ctrBusPersonal") {
     $metodo = $ruta["query"];
     $Personal = new ControladorPersonal();
     $Personal->$metodo();
@@ -100,7 +98,7 @@ class ControladorPersonal
     echo $respuesta;
   }
 
-  static public function ctrBusPersonal()
+/*  static public function ctrBusPersonal()
   {
     require "../modelo/PersonalModelo.php";
     $nitPersonal = $_POST["nitPersonal"];
@@ -108,7 +106,7 @@ class ControladorPersonal
     $respuesta = ModeloPersonal::mdlBusPersonal($nitPersonal);
 
     echo json_encode($respuesta);
-  }
+  }*/
 
   static public function ctrCantidadPersonals()
   {
@@ -121,19 +119,4 @@ class ControladorPersonal
     return $respuesta;
   }
 
-  static public function ctrBuscarPersonal(){
-    require "../modelo/personalModelo.php";
-    require "../modelo/ventaModelo.php";
-
-    $idPersonal = $_POST["idPersonal"];
-    $fecha = $_POST["fecha"];
-
-    $data = array(
-      "idPersonal" => $idPersonal,
-      "fecha" => $fecha,
-    );
-
-    $respuesta = ModeloPersonal::mdlBuscarPersonal($data);
-    echo json_encode($respuesta);
-  }
 }

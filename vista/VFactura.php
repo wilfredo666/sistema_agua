@@ -18,7 +18,6 @@
           <th>Total</th>
           <th>Estado</th>
           <td>
-            <button class="btn btn-primary" onclick="MNuevoFactura()">Nuevo</button>
           </td>
         </tr>
       </thead>
@@ -32,11 +31,9 @@
             <td><?php echo $value["codigo_factura"];?></td>
             <td><?php echo $value["razon_social_cliente"];?></td>
             <td><?php echo $value["fecha_emision"];?></td>
-<<<<<<< Updated upstream
-            <td><?php echo $value["id_usuario"];?></td>
-=======
+
             <td><?php echo $value["login_usuario"];?></td>
->>>>>>> Stashed changes
+
             <td><?php echo $value["total"];?></td>
             <td><?php
           if($value["estado_factura"]==0){
@@ -61,7 +58,7 @@
                 <button class="btn btn-danger" onclick="MEliFactura('<?php echo $value["id_factura"];?>')">
                   <i class="fas fa-trash"></i>
                 </button>
-                <a href="vista/factura/ImpFactura.php?id=<?php echo $value["id_factura"];?>" class="btn btn-success" target="_blank">
+                <a href="vista/factura/ImpNotaVenta.php?id=<?php echo $value["id_factura"];?>" class="btn btn-success" target="_blank">
                   <i class="fas fa-print"></i>
                 </a>
               </div>
