@@ -131,7 +131,7 @@ on usuario.id_usuario=factura.id_usuario where id_factura=$id");
     $stmt->null;
   }
 
-  static public function mdlVentaPersonal($data){
+  static public function mdlVentaReporte($data){
     $idPersonal=$data["idPersonal"];
     $fecha=$data["fecha"];
 

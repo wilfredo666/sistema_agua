@@ -144,7 +144,7 @@ class ControladorVenta{
       "fecha" => $fecha,
     );
 
-    $respuesta = ModeloVenta::mdlVentaPersonal($data);
+    $respuesta = ModeloVenta::mdlVentaReporte($data);
     foreach($respuesta as $value){
 ?>
 <tr>
