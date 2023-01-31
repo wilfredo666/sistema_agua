@@ -133,7 +133,7 @@ class ModeloPersonal{
   }
   
   static public function mdlCantidadPersonals(){
-    $stmt=Conexion::conectar()->prepare("select count(*) as Personal from Personal");
+    $stmt=Conexion::conectar()->prepare("select count(*) as personal from personal");
     $stmt->execute();
 
     return $stmt->fetch();

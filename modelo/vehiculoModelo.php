@@ -109,7 +109,7 @@ class ModeloVehiculo
 
   static public function mdlCantidadVehiculos()
   {
-    $stmt = Conexion::conectar()->prepare("select count(*) as Vehiculo from Vehiculo");
+    $stmt = Conexion::conectar()->prepare("select count(*) as vehiculo from vehiculo");
     $stmt->execute();
 
     return $stmt->fetch();

@@ -2,6 +2,8 @@
 $producto=ControladorProducto::ctrCantidadProductos();
 $cliente=ControladorCliente::ctrCantidadClientes();
 $usuario=ControladorUsuario::ctrCantidadUsuarios();
+$personal=ControladorPersonal::ctrCantidadPersonals();
+$vehiculo=ControladorVehiculo::ctrCantidadVehiculos();
 
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -63,6 +65,33 @@ $usuario=ControladorUsuario::ctrCantidadUsuarios();
             <a href="VCliente" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box " style="background-color: #A841E3;">
+            <div class="inner">
+              <h3><?php echo $personal["personal"];?></h3>
+              <p>Personal registrados</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-earth"></i>
+            </div>
+            <a href="VPersonal" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3><?php echo $vehiculo["vehiculo"];?></h3>
+              <p>Vehículos registrados</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-model-s"></i>
+            </div>
+            <a href="VVehiculo" class="small-box-footer">Mas info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
       </div>
 
       <!--boton de reporte ventas-->
