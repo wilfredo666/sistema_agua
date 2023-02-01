@@ -50,11 +50,11 @@ class ControladorVenta
     return $respuesta;
   }
 
-  /*static public function ctrInfoFactura($id){
+  static public function ctrInfoFactura($id){
 
     $respuesta=ModeloVenta::mdlInfoFactura($id);
     return $respuesta;
-  }*/
+  }
 
   static public function ctrReporteVentas()
   {

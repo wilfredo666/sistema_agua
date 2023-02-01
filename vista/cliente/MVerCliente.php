@@ -76,7 +76,7 @@ $rzCliente = preg_replace('([^A-Za-z0-9])', '', $razonSocial);
 
       <div class="form-group text-center justify-content-center align-items-center mt-3">
         
-        <a href="http://localhost/sistema_agua/vista/cliente/MostrarArchivos.php?nombre=<?php echo $rzCliente ?>" class="btn bg-gradient-info btn-sm " target="_blank" style="width: 80%;">
+        <a href="MostrarArchivosCliente?<?php echo $rzCliente ?>" class="btn bg-gradient-info btn-sm " target="_blank" style="width: 80%;">
           <i class="far fa-copy"> </i> Visualizar archivos
         </a>
       </div>

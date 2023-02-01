@@ -84,7 +84,7 @@ on usuario.id_usuario=factura.id_usuario");
     $stmt->null;
   }
 
-  /*  static public function mdlInfoFactura($id){
+    static public function mdlInfoFactura($id){
     $stmt=Conexion::conectar()->prepare("select * from factura join cliente on cliente.id_cliente=factura.id_cliente where id_factura=$id");
 
     $stmt->execute();
@@ -92,7 +92,7 @@ on usuario.id_usuario=factura.id_usuario");
 
     $stmt->close();
     $stmt->null;
-  }*/
+  }
 
   static public function mdlReporteVentas($fechaInicio, $fechaFinal){
     $stmt=Conexion::conectar()->prepare("SELECT * FROM factura WHERE fecha_emision BETWEEN '$fechaInicio' AND '$fechaFinal 23:59:59'");

@@ -6,7 +6,7 @@ require_once "../../modelo/ventaModelo.php";
 $id=$_GET["id"];
 
 $factura=ControladorVenta::ctrInfoFactura($id);
-$productos=json_decode($factura["detalle"],true);
+$productos=json_decode($factura["detalle_factura"],true);
 ?>
 <div class="modal-header">
   <h4 class="modal-title">Información de factura</h4>
@@ -21,7 +21,7 @@ $productos=json_decode($factura["detalle"],true);
       <table class="table">
         <tr>
           <th>#Factura</th>
-          <td><?php echo $factura["cod_factura"];?></td>
+          <td><?php echo $factura["codigo_factura"];?></td>
         </tr>
 
         <tr>
@@ -37,7 +37,7 @@ $productos=json_decode($factura["detalle"],true);
 
         <tr>
           <th>Emitido por</th>
-          <td><?php echo $factura["usuario"];?></td>
+          <td><?php echo $factura["id_usuario"];?></td>
         </tr>
 
       </table>
@@ -48,8 +48,7 @@ $productos=json_decode($factura["detalle"],true);
         <tbody>
           <th>Producto</th>
           <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Descuento</th>
+          <th>Precio U.</th>
           <th>Total</th>
         </tbody>
         <tbody>
@@ -58,19 +57,26 @@ $productos=json_decode($factura["detalle"],true);
           foreach($productos as $value){
           ?>
           <tr>
-            <td><?php echo $value["descripcion"];?></td>
-            <td><?php echo $value["cantidad"];?></td>
-            <td><?php echo $value["precioUnitario"];?></td>
-            <td><?php echo $value["montoDescuento"];?></td>
-            <td><?php echo $value["subTotal"];?></td>
+            <td><?php echo $value["descProducto"];?></td>
+            <td><?php echo $value["cantProducto"];?></td>
+            <td><?php echo $value["preUnitario"];?></td>
+            <td><?php echo $value["preTotal"];?></td>
           </tr>
           <?php
-            $total=$total+$value["subTotal"];
+            $total=$total+$value["preTotal"];
           }
           ?>
           <tr>
-            <td colspan="4"><b>Total</b></td>
-            <td><?php echo $total;?></td>
+            <td colspan="3"><b>Sub Total</b></td>
+            <td><?php echo $factura["total"];?></td>
+          </tr>
+          <tr>
+            <td colspan="3"><b>Descuento</b></td>
+            <td><?php echo $factura["descuento"];?></td>
+          </tr>
+          <tr>
+            <td colspan="3"><b>Total</b></td>
+            <td><?php echo $factura["neto"];?></td>
           </tr>
 
         </tbody>
