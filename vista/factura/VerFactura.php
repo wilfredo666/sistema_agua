@@ -37,7 +37,30 @@ $productos=json_decode($factura["detalle_factura"],true);
 
         <tr>
           <th>Emitido por</th>
-          <td><?php echo $factura["id_usuario"];?></td>
+          <td><?php echo $factura["nombre_usuario"];?></td>
+        </tr>
+        
+        <tr>
+          <th>Encargado de entrega</th>
+          <td><?php echo $factura["nombre_personal"]." ".$factura["ap_pat_personal"]." ".$factura["ap_mat_personal"];?></td>
+        </tr>
+        
+        <tr>
+          <th>Estado</th>
+          <td><?php
+          if($factura["estado_factura"]==0){
+            ?>
+             <span class="badge badge-success">Emitido</span>
+              <?php
+          }else if($factura["estado_factura"]==2){
+            ?>
+            <span class="badge badge-warning">Pendiente</span>
+            <?php
+          }else{
+            ?>
+            <span class="badge badge-danger">Anulado</span>
+            <?php
+          }?></td>
         </tr>
 
       </table>

@@ -85,7 +85,7 @@ on usuario.id_usuario=factura.id_usuario");
   }
 
     static public function mdlInfoFactura($id){
-    $stmt=Conexion::conectar()->prepare("select * from factura join cliente on cliente.id_cliente=factura.id_cliente where id_factura=$id");
+    $stmt=Conexion::conectar()->prepare("select * from factura join cliente on cliente.id_cliente=factura.id_cliente join usuario on usuario.id_usuario=factura.id_usuario join personal on personal.id_personal=factura.id_personal where id_factura=$id");
 
     $stmt->execute();
     return $stmt->fetch();
@@ -104,8 +104,8 @@ on usuario.id_usuario=factura.id_usuario");
     $stmt->null;
   }
 
-  static public function mdlAnularFactura($cuf){
-    $stmt=Conexion::conectar()->prepare("update factura set estado_factura=0 where cuf='$cuf'");
+  static public function mdlAnularVenta($id){
+    $stmt=Conexion::conectar()->prepare("update factura set estado_factura=0 where id_factura=$id");
 
     if($stmt->execute()){
       return "ok";
@@ -147,5 +147,18 @@ where id_personal=$idPersonal and fecha_emision BETWEEN '$fecha' AND '$fecha 23:
     $stmt->null;
   }
 
+  static public function mdlCmbEstado($id){
+
+    $stmt=Conexion::conectar()->prepare("update factura set estado_factura=1 where id_factura=$id");
+    
+    if($stmt->execute()){
+      return "ok";
+    }else{
+      return "n";
+    }
+
+    $stmt->close();
+    $stmt->null;
+  }
 
 }

@@ -6,10 +6,11 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegistroFactura" ||
     $ruta["query"] == "ctrLeyenda" ||
     $ruta["query"] == "ctrReporteVentas" ||
-    $ruta["query"] == "ctrAnularFactura" ||
+    $ruta["query"] == "ctrAnularVenta" ||
     $ruta["query"] == "ctrRegNotaVenta" ||
     $ruta["query"] == "ctrRegNotaEntrega" ||
-    $ruta["query"] == "ctrVentaPersonal"
+    $ruta["query"] == "ctrVentaPersonal" ||
+    $ruta["query"] == "ctrCmbEstado"
   ) {
     $metodo = $ruta["query"];
     $Producto = new ControladorVenta();
@@ -67,12 +68,13 @@ class ControladorVenta
     echo json_encode($respuesta);
   }
 
-  static public function ctrAnularFactura()
+  static public function ctrAnularVenta()
   {
     require_once "../modelo/ventaModelo.php";
 
-    $cuf = $_POST["cuf"];
-    ModeloVenta::mdlAnularFactura($cuf);
+    $id = $_POST["idVenta"];
+    $respuesta=ModeloVenta::mdlAnularVenta($id);
+    echo $respuesta;
   }
 
   static public function ctrRegNotaVenta()
@@ -141,8 +143,7 @@ class ControladorVenta
     return $respuesta;
   }
 
-  static public function ctrVentaPersonal()
-  {
+  static public function ctrVentaPersonal(){
     require "../modelo/ventaModelo.php";
 
     $idPersonal = $_POST["idPersonal"];
@@ -199,5 +200,12 @@ class ControladorVenta
       });
     </script>
 <?php
+  }
+  
+  static public function ctrCmbEstado(){
+    require_once "../modelo/ventaModelo.php";
+    $id=$_POST["idVenta"];
+    $respuesta = ModeloVenta::mdlCmbEstado($id);
+    echo $respuesta;
   }
 }
