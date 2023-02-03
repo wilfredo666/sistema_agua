@@ -12,34 +12,6 @@ function MNuevoVehiculo(){
   })
 }
 
-function SinCatalogo(){
-  var obj={
-    codigoAmbiente: 2,
-    codigoPuntoVenta: 0,
-    codigoPuntoVentaSpecified: true,
-    codigoSistema: "71D7A7B740E994C89373447",
-    codigoSucursal: 0,
-    cuis: "2E8B5B9E",
-    nit: 3726922011
-  }
-
-  $.ajax({
-    type:"POST",
-    url:"https://localhost:5001/Sincronizacion/listaVehiculosservicios?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqd3JvYmxlcyIsImNvZGlnb1Npc3RlbWEiOiI3MUQ3QTdCNzQwRTk5NEM4OTM3MzQ0NyIsIm5pdCI6Ikg0c0lBQUFBQUFBQUFETTJOekt6TkRJeU1EUUVBSTlYR3pjS0FBQUEiLCJpZCI6NzEwNTQ5LCJleHAiOjE2NzUzODI0MDAsImlhdCI6MTY0Mzk0NTI1Niwibml0RGVsZWdhZG8iOjM3MjY5MjIwMTEsInN1YnNpc3RlbWEiOiJTRkUifQ.nS8t-EDaBi-e3PGtnbnTI-7PKPy_6Kia1zFPKdzZgDnZ6VfXlimlrTsEgTb8_iDKoJ7Hy-vLw_0o_vgpLqSltA",
-    data:JSON.stringify(obj),
-    cache:false,
-    contentType:"application/json",
-    success:function(data){
-
-      for(var i=0;i<data["listaCodigos"].length;i++){
-
-        $("#CatVehiculos").append("<tr><td>"+data["listaCodigos"][i]["codigoActividad"]+"</td><td>"+data["listaCodigos"][i]["codigoVehiculo"]+"</td><td>"+data["listaCodigos"][i]["descripcionVehiculo"]+"</td><td></td></tr>")
-      }
-
-    }
-  })
-}
-
 function RegVehiculo(){
 
   var formData= new FormData($("#FormRegVehiculo")[0])
@@ -82,7 +54,7 @@ function MEditVehiculo(id){
   var obj=""
   $.ajax({
     type:"POST",
-    url:"vista/Vehiculo/FEditVehiculo.php?id="+id,
+    url:"vista/vehiculo/FEditVehiculo.php?id="+id,
     data:obj,
     success:function(data){
       $("#content-default").html(data)

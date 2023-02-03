@@ -108,3 +108,11 @@ function emitirNotaEntrega() {
     })
 
 }
+
+
+=============
+credenciales hosting
+=====================
+data base: u813468505_sistema_agua
+user: u813468505_root
+password: Administrador1!
