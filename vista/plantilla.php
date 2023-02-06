@@ -76,7 +76,8 @@
         $_GET["ruta"] == "VPersonal" ||
         $_GET["ruta"] == "VNotaEntrega" ||
         $_GET["ruta"] == "VVehiculo" ||
-        $_GET["ruta"] == "VReporte"
+        $_GET["ruta"] == "VReporte" ||
+        $_GET["ruta"] == "VRepChofer"
       ) {
         $ruta=$_GET["ruta"].".php";
       }

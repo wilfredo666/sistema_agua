@@ -160,5 +160,21 @@ where id_personal=$idPersonal and fecha_emision BETWEEN '$fecha' AND '$fecha 23:
     $stmt->close();
     $stmt->null;
   }
+/* REVISAR PORQUE LOS CHOFERES NO TIENEN UN ACCESSO CON SESSION */
+  static public function InfoVentasChofer($data){
+
+    $usuario=$data["usuario"];
+
+    $stmt=Conexion::conectar()->prepare("select * from factura where id_personal=$usuario");
+
+    if($stmt->execute()){
+      return "ok";
+    }else{
+      return "n";
+    }
+
+    $stmt->close();
+    $stmt->null;
+  }
 
 }

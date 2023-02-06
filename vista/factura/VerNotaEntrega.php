@@ -9,7 +9,7 @@ $NotaVenta=ControladorVenta::ctrInfoNotaEntrega($id);
 $productos=json_decode($NotaVenta["detalle_ne"],true);
 ?>
 <div class="modal-header">
-  <h4 class="modal-title">Nota de Venta</h4>
+  <h4 class="modal-title">Nota de Entega</h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

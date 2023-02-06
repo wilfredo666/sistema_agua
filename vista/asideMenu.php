@@ -125,24 +125,38 @@ with font-awesome or any other icon font library -->
                   </p>
                 </a>
 
-                <ul class="nav nav-treeview">         
+
+                <ul class="nav nav-treeview">
+
+
                   <li class="nav-item">
                     <a href="FormVenta" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa-circle nav-icon text-info"></i>
                       <p>Nota de Venta</p>
                     </a>
                   </li>
-
                   <li class="nav-item">
                     <a href="VFactura" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa-circle nav-icon text-info"></i>
                       <p>Reporte de NV</p>
                     </a>
                   </li>
                 <?php
               }
                 ?>
-                <?php if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Chofer") {
+                <?php if ($_SESSION["perfil"] == "Chofer") {
+                ?>
+                  <li class="nav-item">
+                    <a href="VRepChofer" class="nav-link">
+                      <i class="far fa-circle nav-icon text-info"></i>
+                      <p>Reporte Nota Venta</p>
+                    </a>
+                  </li>
+
+                <?php
+                }
+                ?>
+                <?php if ($_SESSION["perfil"] == "Administrador") {
                 ?>
                   <li class="nav-item">
                     <a href="FNotaEntrega" class="nav-link">
@@ -150,11 +164,7 @@ with font-awesome or any other icon font library -->
                       <p>Nota de Entrega</p>
                     </a>
                   </li>
-                <?php
-                }
-                ?>
-                <?php if ($_SESSION["perfil"] == "Administrador") {
-                ?>
+
                   <li class="nav-item">
                     <a href="VNotaEntrega" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>

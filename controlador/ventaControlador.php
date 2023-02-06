@@ -10,7 +10,8 @@ if (isset($ruta["query"])) {
     $ruta["query"] == "ctrRegNotaVenta" ||
     $ruta["query"] == "ctrRegNotaEntrega" ||
     $ruta["query"] == "ctrVentaPersonal" ||
-    $ruta["query"] == "ctrCmbEstado"
+    $ruta["query"] == "ctrCmbEstado" ||
+    $ruta["query"] == "ctrInfoVentasChofer" 
   ) {
     $metodo = $ruta["query"];
     $Producto = new ControladorVenta();
@@ -206,6 +207,18 @@ class ControladorVenta
     require_once "../modelo/ventaModelo.php";
     $id=$_POST["idVenta"];
     $respuesta = ModeloVenta::mdlCmbEstado($id);
+    echo $respuesta;
+  }
+/* REVISAR PORQUE LOS CHOFERES NO TIENEN UN ACCESSO CON SESSION */
+  static public function ctrInfoVentasChofer()
+  {
+    session_start();
+    require_once "../modelo/ventaModelo.php";
+    $data = array(
+      "usuario" => $_SESSION["idUsuario"]
+    );
+    /* var_dump($data); */
+    $respuesta = ModeloVenta::InfoVentasChofer($data);
     echo $respuesta;
   }
 }

@@ -77,23 +77,18 @@ class ModeloProducto{
   }
 
   static public function mdlEliProducto($data){
-    $factura = Conexion::conectar()->prepare("select * from factura where id_producto=$data");
-    $factura->execute();
-    if($factura->fetch() > 0){
+    $producto = Conexion::conectar()->prepare("select * from producto where id_producto=$data and estado=1");
+    $producto->execute();
+    if($producto->fetch() > 0){
       echo "error";
-    } else {
-      $notaEntrega = Conexion::conectar()->prepare("select * from nota_entrega id_producto=$data");
-      $notaEntrega->execute();
-      if($notaEntrega->fetch() > 0){
-        echo "error";
-      } else {
+    }  else {
         $stmt=Conexion::conectar()->prepare("delete from producto where id_producto=$data");
         if($stmt->execute()){
           return "ok";
+        }else{
+          return "error";
         }
       }
-    }
-
     $stmt->close();
     $stmt->null;
   }

@@ -5,7 +5,9 @@ require "../../modelo/personalModelo.php";
 $id = $_GET["id"];
 $personal = ControladorPersonal::ctrInfoPersonal($id);
 
-$nombresPersonal =  $personal["nombre_personal"] . "" . $personal["ap_pat_personal"];
+$nombre = preg_replace('/\s+/', '_', $personal["nombre_personal"]) ;
+
+$nombresPersonal =  $nombre . "" . $personal["ap_pat_personal"];
 ?>
 
 <div class="modal-header encabezado">

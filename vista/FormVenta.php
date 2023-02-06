@@ -20,17 +20,39 @@
 
         <div class="col-md-6">
           <div class="form-group col-md-12">
-            <table id="DataTableProductoNotaVenta" class="display compact">
+            <table id="DataTableProd" class="display compact">
               <thead>
                 <tr>
                   <th>Cod. Producto</th>
                   <th>Descripción</th>
                   <th>Acción</th>
-                  <!-- <td></td> -->
+                  <!--        <td>
+                    $botones="<div class='btn-group'>
+                             <button type='button' class='btn btn-info btn-block btn-sm' onclick='agregarCarrito2(".$value['id_producto'].")'>
+                                <i class='fas fa-plus'></i>
+                             </button>
+                            </div>";
+                          </td> -->
                 </tr>
               </thead>
               <tbody>
-
+                <?php
+                $producto = ControladorProducto::ctrInfoProductos();
+                foreach ($producto as $value) {
+                ?><tr>
+                    <td><?php echo $value["cod_producto"]; ?></td>
+                    <td><?php echo $value["nombre_producto"]; ?></td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-info" onclick="agregarCarrito2(<?php echo $value["id_producto"]; ?>)">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                <?php
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -64,7 +86,7 @@
 
               foreach ($cliente as $value) {
               ?>
-              <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
+                <option value="<?php echo $value["nit_ci_cliente"]; ?>"><?php echo $value["razon_social_cliente"]; ?></option>
               <?php }
               ?>
             </datalist>
@@ -90,7 +112,7 @@
               $personal = ControladorPersonal::ctrInfoPersonalDisp();
               foreach ($personal as $value) {
               ?>
-              <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>
+                <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>
               <?php
               }
               ?>
@@ -114,7 +136,7 @@
 
               <tr>
 
-               <td colspan="2"></td>
+                <td colspan="2"></td>
                 <td colspan="3">
                   <div class="input-group sm-3">
                     <div class="input-group-prepend">
@@ -122,14 +144,14 @@
                     </div>
                     <input type="text" class="form-control form-control-sm" name="totalVenta" id="totalVenta" value="0.00" readonly style="text-align:right">
                   </div>
-                  
+
                   <div class="input-group sm-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" style="padding:0.15rem 0.5rem">Descuento</span>
                     </div>
                     <input type="text" id="descuentoVenta" class="form-control form-control-sm" onkeyup="calcularTotal()" value="0.00" style="text-align:right">
                   </div>
-                  
+
                   <div class="input-group sm-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" style="padding:0.15rem 0.5rem">Total</span>
@@ -144,8 +166,8 @@
 <th>Descuento</th>
 <td><input type="text" id="descuentoVenta" class="form-control form-control-sm" onkeyup="calcularTotal()" value="0"></td>-->
               </tr>
- 
-                <!--<th colspan="3">Total</th>
+
+              <!--<th colspan="3">Total</th>
 <td><input type="text" id="netoVenta" readonly class="form-control form-control-sm"></td>-->
 
 
