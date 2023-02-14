@@ -1,4 +1,3 @@
-
 <footer class="main-footer">
   <div class="float-right d-none d-sm-block">
     <b>Version</b> 1.0
@@ -48,7 +47,7 @@
 <script src="assest/js/cliente.js"></script>
 <script src="assest/js/producto.js"></script>
 <script src="assest/js/factura.js"></script>
-<script src="assest/js/reporte.js"></script>
+<!--<script src="assest/js/reporte.js"></script>-->
 <script src="assest/js/personal.js"></script>
 <script src="assest/js/vehiculo.js"></script>
 <!-- Select2 -->
@@ -152,7 +151,7 @@ seccion de modals
 
   $(function () {
     $("#DataTableProd").DataTable({
-      
+
       "paging":true,
       "searching":true,
       "ordering":true,
@@ -160,7 +159,7 @@ seccion de modals
       "responsive": true, 
       "lengthChange": false, 
       "autoWidth": false,
-      
+
       language:{
         "decimal": "",
         "emptyTable": "No hay información",
@@ -454,10 +453,113 @@ seccion de modals
 
 </script>
 
+<script>
+  //validar formulario nuevo cliente
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        RegCliente()
+      }
+    })
+
+    $("#FormRegCliente").validate({
+      rules: {
+        rsCliente: {
+          required: true,
+          minlength: 3
+        },
+        NitCiCliente: {
+          required: true,
+          minlength: 3
+        },
+        dirCliente: {
+          minlength: 3
+        },
+        telCliente: {
+          minlength: 3
+        },
+        precioEntregaCli: {
+          required: true,
+        },
+
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback')
+        element.closest('.form-group').append(error)
+      },
+
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid')
+        /* .is-invalid */
+      },
+
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid')
+      }
+    })
+
+  })
+</script>
+
+<script>
+  //validacion editar cliente
+  $(function() {
+    $.validator.setDefaults({
+      submitHandler: function() {
+        EditCliente()
+      }
+    })
+    $("#FormEditCliente").validate({
+      rules: {
+        rsCliente: {
+          required: true,
+          minlength: 3
+        },
+        NitCiCliente: {
+          required: true,
+          minlength: 3
+        },
+        nombreCliente: {
+          required: true,
+          minlength: 3
+        },
+        dirCliente: {
+          minlength: 3
+        },
+        telCliente: {
+          minlength: 3
+        },
+        precioEntregaCli: {
+          required: true,
+        },
+
+        /* perfilUsuario:"required" */
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback')
+        element.closest('.form-group').append(error)
+      },
+
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid')
+        /* .is-invalid */
+      },
+
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid')
+      }
+    })
+
+  })
+</script>
+
+
 <!-- Bootstrap Switch -->
 <script src="assest/plugins/bootstrap-switch/js/bootstrap-switch.js"></script>
 <script>
- $("input[data-bootstrap-switch]").each(function(){
+  $("input[data-bootstrap-switch]").each(function(){
     $(this).bootstrapSwitch('state', $(this).prop('checked'));
   })
 </script>

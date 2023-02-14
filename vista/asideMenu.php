@@ -87,6 +87,13 @@ with font-awesome or any other icon font library -->
                       <p>Lista de clientes</p>
                     </a>
                   </li>
+                  
+                  <li class="nav-item">
+                    <a href="FNuevoCliente" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Registrar Cliente</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
             <?php

@@ -22,12 +22,13 @@ class ModeloCliente{
     $telCliente=$data["telCliente"];
     $imgFachada=$data["imgFachada"];
     $precioEntregaCli=$data["precioEntregaCli"];
+    $ubicacion=$data["ubicacion"];
 
     date_default_timezone_set('America/La_Paz');
     $fecha = date('Y-m-d');
 
 
-    $stmt=Conexion::conectar()->prepare("insert into cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente, foto_fachada, precio_entrega, fecha_registro_cliente ) values('$rsCliente', '$NitCiCliente', '$dirCliente', '$nombreCliente', '$telCliente', '$imgFachada', '$precioEntregaCli', '$fecha')");
+    $stmt=Conexion::conectar()->prepare("insert into cliente(razon_social_cliente, nit_ci_cliente, direccion_cliente, nombre_cliente, telefono_cliente, ubicacion_cliente, foto_fachada, precio_entrega, fecha_registro_cliente ) values('$rsCliente', '$NitCiCliente', '$dirCliente', '$nombreCliente', '$telCliente', '$ubicacion', '$imgFachada', '$precioEntregaCli', '$fecha')");
 
     if($stmt->execute()){
       return "ok";
@@ -57,8 +58,9 @@ class ModeloCliente{
     $telCliente=$data["telCliente"];
     $precioEntregaCli=$data["precioEntregaCli"];
     $imgProducto=$data["imgProducto"];
+    $ubicacion=$data["ubicacion"];
 
-    $stmt=Conexion::conectar()->prepare("update cliente set direccion_cliente='$dirCliente', nombre_cliente='$nombreCliente', telefono_cliente='$telCliente', foto_fachada='$imgProducto', precio_entrega='$precioEntregaCli' where id_cliente=$idCliente");
+    $stmt=Conexion::conectar()->prepare("update cliente set direccion_cliente='$dirCliente', nombre_cliente='$nombreCliente', telefono_cliente='$telCliente', ubicacion_cliente='$ubicacion', foto_fachada='$imgProducto', precio_entrega='$precioEntregaCli' where id_cliente=$idCliente");
 
     if($stmt->execute()){
       return "ok";

@@ -1,19 +1,8 @@
 function MNuevoCliente() {
-  $("#modal-lg").modal("show")
-
-  var obj = ""
-  $.ajax({
-    type: "POST",
-    url: "vista/cliente/FNuevoCliente.php",
-    data: obj,
-    success: function (data) {
-      $("#content-lg").html(data)
-    }
-  })
+  window.location="FNuevoCliente";
 }
 
 function RegCliente() {
-  console.log("holaaa");
 
   var formData = new FormData($("#FormRegCliente")[0])
 
@@ -25,6 +14,7 @@ function RegCliente() {
     contentType: false,
     processData: false,
     success: function (data) {
+
       if (data == "ok") {
         Swal.fire({
           icon: 'success',
@@ -51,17 +41,7 @@ function RegCliente() {
 }
 
 function MEditCliente(id) {
-  $("#modal-lg").modal("show")
-
-  var obj = ""
-  $.ajax({
-    type: "POST",
-    url: "vista/cliente/FEditCliente.php?id=" + id,
-    data: obj,
-    success: function (data) {
-      $("#content-lg").html(data)
-    }
-  })
+window.location="FEditCliente?"+id;
 }
 
 function EditCliente() {
@@ -205,7 +185,7 @@ function MSubirArchivosCli(rzCliente) {
   /* console.log(rzCliente) */
 }
 
-function MVerUbicacionCliente(id){
+/*function MVerUbicacionCliente(id){
     $("#modal-default").modal("show")
 
   var obj=""
@@ -217,6 +197,6 @@ function MVerUbicacionCliente(id){
       $("#content-default").html(data)
     }
   })
-}
+}*/
 
 

@@ -54,8 +54,10 @@
     if (isset($_GET["ruta"])) {
 
       //cliente - archivos
-      if($_GET["ruta"]=="MostrarArchivosCliente"){
-        $ruta="cliente/MostrarArchivosCliente.php";
+      if($_GET["ruta"]=="MostrarArchivosCliente"||
+        $_GET["ruta"]=="FNuevoCliente"||
+        $_GET["ruta"]=="FEditCliente"){
+        $ruta="cliente/".$_GET["ruta"].".php";
       }
       
       //personal - archivos

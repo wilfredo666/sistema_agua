@@ -5,7 +5,7 @@ if(isset($ruta["query"])){
   if($ruta["query"]=="ctrRegCliente"||
      $ruta["query"]=="ctrEditCliente"||
      $ruta["query"]=="ctrEliCliente"||
-    $ruta["query"]=="ctrBusCliente"){
+     $ruta["query"]=="ctrBusCliente"){
     $metodo=$ruta["query"];
     $Cliente=new ControladorCliente();
     $Cliente->$metodo();
@@ -22,7 +22,7 @@ class ControladorCliente{
   }
 
   static public function ctrRegCliente(){
-    require "../modelo/ClienteModelo.php";
+    require "../modelo/clienteModelo.php";
 
     $imagen = $_FILES["ImgFachada"];
 
@@ -31,6 +31,7 @@ class ControladorCliente{
 
     move_uploaded_file($archImagen, "../assest/dist/img/fachadas/".$nomImagen);
 
+    $ubicacion=$_POST["ubiLatitud"].",".$_POST["ubiLongitud"];
     $data=array(
       "rsCliente"=>$_POST["rsCliente"],
       "NitCiCliente"=>$_POST["NitCiCliente"],
@@ -38,7 +39,8 @@ class ControladorCliente{
       "nombreCliente"=>$_POST["nombreCliente"],
       "telCliente"=>$_POST["telCliente"],
       "precioEntregaCli"=>$_POST["precioEntregaCli"],
-      "imgFachada"=>$nomImagen
+      "imgFachada"=>$nomImagen,
+      "ubicacion"=>$ubicacion
     );
 
     $respuesta=ModeloCliente::mdlRegCliente($data);
@@ -66,14 +68,15 @@ class ControladorCliente{
 
       move_uploaded_file($archImagen,"../assest/dist/img/fachadas/".$imagen);
     }
-
-     $data=array(
+    $ubicacion=$_POST["ubiLatitud"].",".$_POST["ubiLongitud"];
+    $data=array(
       "idCliente"=>$_POST["idCliente"],
       "dirCliente"=>$_POST["dirCliente"],
       "nombreCliente"=>$_POST["nombreCliente"],
       "telCliente"=>$_POST["telCliente"],
       "precioEntregaCli"=>$_POST["precioEntregaCli"],
-      "imgProducto"=>$imagen
+      "imgProducto"=>$imagen,
+      "ubicacion"=>$ubicacion
     );
 
     $respuesta=ModeloCliente::mdlEditCliente($data);
@@ -91,15 +94,15 @@ class ControladorCliente{
     echo $respuesta;
 
   }
-  
+
   static public function ctrBusCliente(){
     require "../modelo/ClienteModelo.php";
     $nitCliente=$_POST["nitCliente"];
-    
+
     $respuesta=ModeloCliente::mdlBusCliente($nitCliente);
     echo json_encode($respuesta);
   }
-  
+
   static public function ctrCantidadClientes(){
     $respuesta=ModeloCliente::mdlCantidadClientes();
     return $respuesta;

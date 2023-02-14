@@ -295,7 +295,6 @@ function descPreProducto() {
 
 function prueba(){
   let descuento = parseFloat(document.getElementById("descuentoVenta").value)
-  console.log("helo")
 }
 function calcularTotal() {
   let totalCarrito = 0
