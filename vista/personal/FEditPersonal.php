@@ -88,30 +88,7 @@ $nombresPersonal =  $nombre . "" . $personal["ap_pat_personal"];
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="">Ubicación</label>
-                </div>
-            </div>
-            <!-- <div class="col-sm-4 text-center">
 
-                <label class="card-title">Estado</label> <br>
-                <div class="">
-
-                    <?php
-                    if ($personal["estado_personal"] == 1) {
-                    ?>
-                        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
-                    <?php
-                    } else {
-                    ?>
-                        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-on-color="success" data-off-color="danger">
-                    <?php
-                    }
-                    ?>
-                </div>
-
-            </div> -->
             <div class="col-sm-4">
                 <div class="form-group">
                     <label for="">Estado</label>
@@ -131,6 +108,7 @@ $nombresPersonal =  $nombre . "" . $personal["ap_pat_personal"];
             </div> 
 
         </div>
+        <div class="col-sm-4"></div>
     </div>
 
     <div class="modal-footer justify-content-between">
