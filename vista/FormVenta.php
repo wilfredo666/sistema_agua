@@ -109,7 +109,7 @@
             <select class="form-control select2bs4" name="personal" id="personal">
               <option value="">Seleccionar personal</option>
               <?php
-              $personal = ControladorPersonal::ctrInfoPersonalDisp();
+              $personal = ControladorUsuario::ctrUsuarioDisp();
               foreach ($personal as $value) {
               ?>
                 <option value="<?php echo $value["id_personal"]; ?>"><?php echo $value["nombre_personal"] . " " . $value["ap_pat_personal"] . " " . $value["ap_mat_personal"] ?></option>

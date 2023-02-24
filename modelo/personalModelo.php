@@ -35,7 +35,7 @@ class ModeloPersonal
     $stmt->close();
     $stmt->null;
   }
-
+//sin uso
   static public function mdlInfoPersonalDisp()
   {
     $stmt = Conexion::conectar()->prepare("select * from personal where cargo_personal='Chofer' and estado_personal=1 or cargo_personal='Secretaria' and estado_personal=1");

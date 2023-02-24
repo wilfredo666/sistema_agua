@@ -113,7 +113,7 @@ class ControladorPersonal
     $respuesta = ModeloPersonal::mdlCantidadPersonals();
     return $respuesta;
   }
-
+//sin uso
   static public function ctrInfoPersonalDisp(){
     $respuesta = ModeloPersonal::mdlInfoPersonalDisp();
     return $respuesta;

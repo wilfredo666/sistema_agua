@@ -135,4 +135,9 @@ class ControladorUsuario{
     $respuesta=ModeloUsuario::mdlCantidadUsuarios();
     return $respuesta;
   }
+  
+    static public function ctrUsuarioDisp(){
+    $respuesta = ModeloUsuario::mdlUsuarioDisp();
+    return $respuesta;
+  }
 }

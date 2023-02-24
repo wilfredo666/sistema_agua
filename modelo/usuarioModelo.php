@@ -146,4 +146,14 @@ class ModeloUsuario
     $stmt->close();
     $stmt->null;
   }
+  
+  static public function mdlUsuarioDisp()
+  {
+    $stmt = Conexion::conectar()->prepare("select * from usuario where cargo_personal='Chofer' and estado=1 or cargo_personal='Secretaria' and estado=1");
+    $stmt->execute();
+    return $stmt->fetchAll();
+
+    $stmt->close();
+    $stmt->null;
+  }
 }
